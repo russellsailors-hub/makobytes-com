@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
+const Spline = dynamic(() => import("@splinetool/react-spline/next"), {
   ssr: false,
   loading: () => (
     <div className="flex h-full w-full items-center justify-center bg-ink-950 text-white">
