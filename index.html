@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptPixel - Turn Screenshots into AI Prompts Instantly</title>
+    <meta name="description" content="Capture any screen content, extract text with OCR, and get a perfectly crafted AI prompt ready to paste. No more typing — just screenshot and go. $25 one-time purchase.">
+    <meta name="keywords" content="screenshot to AI prompt, OCR tool, AI prompt generator, productivity tool, screen capture, text extraction">
+    <meta name="author" content="MakoBytes">
+    <meta property="og:title" content="PromptPixel - Turn Screenshots into AI Prompts">
+    <meta property="og:description" content="Capture screenshots and instantly get AI-ready prompts. OCR-powered text extraction for seamless AI workflows.">
+    <meta property="og:image" content="Main Logo.png">
+    <meta property="og:url" content="https://makobytes.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://makobytes.com">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PromptPixel",
+        "description": "Turn screenshots into AI prompts instantly with OCR and AI enhancement",
+        "url": "https://makobytes.com",
+        "image": "Main Logo.png",
+        "author": {
+            "@type": "Organization",
+            "name": "MakoBytes"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "25.00",
+            "priceCurrency": "USD",
+            "priceValidUntil": "2027-04-09"
+        },
+        "applicationCategory": "ProductivityApplication"
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#ffffff', // white
+                        surface: '#f8f9fa', // light grey
+                        'surface-hover': '#e9ecef', // lighter grey
+                        foreground: '#212529', // dark grey
+                        'foreground-muted': '#6c757d', // muted grey
+                        'foreground-subtle': '#adb5bd', // subtle grey
+                        primary: '#007bff', // blue
+                        accent: '#c0c0c0', // silver
+                    },
+                    borderRadius: {
+                        'sm': '8px',
+                        'md': '12px',
+                        'lg': '20px',
+                        'xl': '28px',
+                        'full': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 123, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .glass:hover {
+            border-color: rgba(0, 123, 255, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(223deg, #212529 0%, #007bff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 p-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass rounded-full px-6 py-3 flex items-center justify-between">
+                <img src="Main Logo.png" alt="PromptPixel Logo" class="h-8">
+                <a href="#buy" class="bg-primary text-background px-4 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">Buy Now - $25</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <img src="Main Logo.png" alt="MakoBytes Logo" class="h-16 mx-auto mb-6">
+            <h1 class="text-6xl md:text-8xl font-normal mb-6 leading-tight">
+                Premium Software for<br>
+                <span class="gradient-text font-serif italic">Productivity & AI</span>
+            </h1>
+            <p class="text-xl text-foreground-muted mb-12 max-w-2xl mx-auto">
+                Discover powerful tools designed to streamline your workflow and supercharge your AI interactions.
+            </p>
+            <a href="#products" class="bg-primary text-background px-8 py-4 rounded-full text-lg font-medium hover:opacity-90 transition-opacity inline-block">
+                Explore Our Apps
+            </a>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-normal text-center mb-16">Our Software</h2>
+            <div class="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
+                <div class="glass rounded-xl p-8 text-center hover:shadow-lg transition-shadow">
+                    <img src="Main Logo.png" alt="PromptPixel Logo" class="h-12 mx-auto mb-6">
+                    <h3 class="text-2xl font-medium mb-4">PromptPixel</h3>
+                    <p class="text-foreground-muted mb-6">Turn screenshots into AI prompts instantly with advanced OCR and AI enhancement.</p>
+                    <div class="text-3xl font-bold text-primary mb-4">$25</div>
+                    <a href="promptpixel.html" class="bg-primary text-background px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity inline-block mr-4">Learn More</a>
+                    <a href="https://buy.polar.sh/promptpixel" target="_blank" class="bg-accent text-foreground px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity inline-block">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="py-24 px-6 bg-surface">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-normal mb-6">About MakoBytes</h2>
+            <p class="text-xl text-foreground-muted">We create productivity software that leverages AI to make your workflow smarter and faster. Our tools are designed for professionals who want to focus on creativity, not repetitive tasks.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-surface">
+        <div class="max-w-5xl mx-auto text-center">
+            <p class="text-foreground-muted">© 2026 MakoBytes. Built for productivity.</p>
+        </div>
+    </footer>
+</body>
+</html>
