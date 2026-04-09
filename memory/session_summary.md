@@ -7,35 +7,27 @@ updated: 2026-04-09
 
 ## What happened
 
-Switched focus to building makobytes.com landing page for PromptPixel. Created a premium dark-themed landing page with Viktor Oddy style design, featuring glassmorphism effects, responsive layout, and integrated Polar buy link. Page showcases PromptPixel's core features (screenshot capture, OCR, AI prompt generation) with $25 one-time pricing.
+Pushed Next.js makobytes.com rebuild to GitHub after resolving email privacy issue. Prepared for Vercel import but encountered 404 error when testing—indicates repo may not yet be imported to Vercel or stale URL was used.
 
 ## What's now in place
 
-- ✅ makobytes.com landing page created with modern design
-- ✅ Features section highlighting screenshot → OCR → AI workflow
-- ✅ Buy button linked to Polar checkout (placeholder URL used)
-- ✅ Dark premium aesthetic with glassmorphism and gradient text
-- ✅ Responsive design for mobile and desktop
-- ✅ MakoBytes branding integrated
-- ✅ Color scheme updated to blue, silver, grey, white
-- ✅ Main Logo.png added to navbar
-- ✅ SEO optimization with meta tags, Open Graph, structured data
-- ✅ Expanded to software catalog homepage with products section
-- ✅ Dedicated PromptPixel product page with features, screenshots, and detailed specs
+- ✅ Next.js 14 project with TypeScript + Tailwind + shadcn + Spline Whobee 3D robot
+- ✅ Full codebase committed and pushed to github.com/russellsailors-hub/makobytes-com (main branch)
+- ✅ GitHub email privacy resolved via forced push
+- ✅ Ready for Vercel import
 
 ## Next step when Russell returns
 
-**CRITICAL: Deploy the site live for Polar account review**
-
-1. **Choose hosting platform**: Options include Vercel (free), Netlify (free), or Cloudflare Pages (free) for static site deployment
-2. **Deploy index.html**: Upload or connect Git repo to chosen platform
-3. **Verify live URL**: Ensure makobytes.com points to the deployed site (may need domain DNS update)
-4. **Test buy button**: Confirm Polar checkout link works correctly
-5. **Submit Polar account review**: Once site is live, complete the 10-item review form in Polar dashboard
+1. Go to [vercel.com/dashboard](https://vercel.com/dashboard)
+2. Check if `makobytes-com` project exists:
+   - **If exists**: Click project → check latest deployment → review Build Logs if failed
+   - **If missing**: Go to [vercel.com/new](https://vercel.com/new) → find russellsailors-hub/makobytes-com in list → click Import → Deploy
+3. Wait 2–3 min for build, then test live URL (hero robot loads, sections visible)
+4. After live: Settings → Domains → add makobytes.com + DNS records
 
 ## Important context
 
-- Landing page uses Tailwind CSS via CDN for styling
-- Buy URL currently placeholder — needs actual Polar checkout URL from product
-- Site designed for conversion: hero CTA, feature benefits, clear pricing
-- Once live, this satisfies the #1 blocker for Polar account review
+- 404 error suggests either: (A) repo not imported yet, (B) import failed silently, or (C) old/guessed URL
+- Vercel auto-detects Next.js; no special config needed
+- Domain DNS records provided by Vercel after successful deploy
+- Still need to: resume PromptPixel licensing/Polar account review after site live
