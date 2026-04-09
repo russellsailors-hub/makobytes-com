@@ -14,14 +14,39 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
  *  - Eye blink via emissive intensity pulse on cyan/glowing materials
  *  - Boot-up fade-in on first mount
  */
+// Eye overlay position relative to the model's bounding box center.
+// Tweak these if the disks don't land over the eyes.
+const EYE_Y_RATIO = 0.32; // how far up the head from bbox center (0 = center, 1 = top)
+const EYE_Z_RATIO = 0.55; // how far forward from bbox center toward the front
+const EYE_SPACING_RATIO = 0.18; // horizontal spacing between the two eyes
+const EYE_RADIUS_RATIO = 0.07; // size of each eye disk relative to bbox height
+
 function WhobeeModel({ mouse }: { mouse: { x: number; y: number } }) {
   const group = useRef<THREE.Group>(null);
+  const leftEyeRef = useRef<THREE.Mesh>(null);
+  const rightEyeRef = useRef<THREE.Mesh>(null);
   const gltf = useLoader(GLTFLoader, "/whobee.glb");
   const [bootProgress, setBootProgress] = useState(0);
   const nextBlinkRef = useRef<number>(2 + Math.random() * 3);
   const blinkStateRef = useRef<{ active: boolean; t: number; double: boolean }>(
     { active: false, t: 0, double: false },
   );
+
+  // Compute eye overlay positions from the GLB's bounding box
+  const eyeConfig = useMemo(() => {
+    const box = new THREE.Box3().setFromObject(gltf.scene);
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+    const radius = size.y * EYE_RADIUS_RATIO;
+    const y = center.y + size.y * EYE_Y_RATIO;
+    const z = center.z + size.z * EYE_Z_RATIO;
+    const xOffset = size.x * EYE_SPACING_RATIO;
+    return {
+      radius,
+      leftPos: [center.x - xOffset, y, z] as [number, number, number],
+      rightPos: [center.x + xOffset, y, z] as [number, number, number],
+    };
+  }, [gltf]);
 
   // Find materials that look like eyes. Meshy's image-to-3D bakes eye glow
   // into the base color texture map, so material.color is often neutral.
@@ -158,8 +183,11 @@ function WhobeeModel({ mouse }: { mouse: { x: number; y: number } }) {
     group.current.rotation.y += (targetY - group.current.rotation.y) * 0.06;
     group.current.rotation.x += (targetX - group.current.rotation.x) * 0.06;
 
-    // Eye blink state machine
+    // Eye blink state machine — animates the overlay disk materials
     const blink = blinkStateRef.current;
+    const BASE_INTENSITY = 2.6;
+    let intensity = BASE_INTENSITY;
+
     if (!blink.active) {
       nextBlinkRef.current -= delta;
       if (nextBlinkRef.current <= 0) {
@@ -169,33 +197,30 @@ function WhobeeModel({ mouse }: { mouse: { x: number; y: number } }) {
       }
     } else {
       blink.t += delta;
-      // Single blink: ~140ms down, ~140ms back
       const phase = blink.t;
-      let intensity = 1.8;
       if (phase < 0.14) {
-        intensity = 1.8 - (phase / 0.14) * 1.75;
+        intensity = BASE_INTENSITY - (phase / 0.14) * (BASE_INTENSITY - 0.05);
       } else if (phase < 0.28) {
-        intensity = 0.05 + ((phase - 0.14) / 0.14) * 1.75;
+        intensity = 0.05 + ((phase - 0.14) / 0.14) * (BASE_INTENSITY - 0.05);
       } else if (blink.double && phase < 0.42) {
-        intensity = 1.8 - ((phase - 0.28) / 0.14) * 1.75;
+        intensity =
+          BASE_INTENSITY - ((phase - 0.28) / 0.14) * (BASE_INTENSITY - 0.05);
       } else if (blink.double && phase < 0.56) {
-        intensity = 0.05 + ((phase - 0.42) / 0.14) * 1.75;
+        intensity = 0.05 + ((phase - 0.42) / 0.14) * (BASE_INTENSITY - 0.05);
       } else {
-        intensity = 1.8;
+        intensity = BASE_INTENSITY;
         blink.active = false;
         nextBlinkRef.current = 3 + Math.random() * 3; // 3–6s until next blink
       }
-      eyeMaterials.forEach((m) => {
-        m.emissiveIntensity = intensity * bootProgress;
-      });
     }
 
-    // Apply boot-up fade to eye glow even when not blinking
-    if (!blink.active) {
-      eyeMaterials.forEach((m) => {
-        m.emissiveIntensity = 1.8 * bootProgress;
-      });
-    }
+    const finalIntensity = intensity * bootProgress;
+    [leftEyeRef.current, rightEyeRef.current].forEach((m) => {
+      if (m && m.material instanceof THREE.MeshStandardMaterial) {
+        m.material.emissiveIntensity = finalIntensity;
+        m.material.opacity = 0.4 + bootProgress * 0.6;
+      }
+    });
 
     // Boot-up scale pop
     const s = 0.85 + bootProgress * 0.15;
@@ -205,6 +230,34 @@ function WhobeeModel({ mouse }: { mouse: { x: number; y: number } }) {
   return (
     <group ref={group} dispose={null}>
       <primitive object={gltf.scene} />
+
+      {/* Left eye glow overlay */}
+      <mesh ref={leftEyeRef} position={eyeConfig.leftPos}>
+        <sphereGeometry args={[eyeConfig.radius, 32, 32]} />
+        <meshStandardMaterial
+          color="#22d3ee"
+          emissive="#22d3ee"
+          emissiveIntensity={2.6}
+          transparent
+          opacity={1}
+          toneMapped={false}
+          depthWrite={false}
+        />
+      </mesh>
+
+      {/* Right eye glow overlay */}
+      <mesh ref={rightEyeRef} position={eyeConfig.rightPos}>
+        <sphereGeometry args={[eyeConfig.radius, 32, 32]} />
+        <meshStandardMaterial
+          color="#22d3ee"
+          emissive="#22d3ee"
+          emissiveIntensity={2.6}
+          transparent
+          opacity={1}
+          toneMapped={false}
+          depthWrite={false}
+        />
+      </mesh>
     </group>
   );
 }
