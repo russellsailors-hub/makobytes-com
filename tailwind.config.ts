@@ -42,7 +42,10 @@ const config: Config = {
         },
         glow: {
           cyan: "#22d3ee",
-          violet: "#8b5cf6",
+          // "violet" key kept for class-name compatibility, but recolored to
+          // electric blue per Russell's "no purple" feedback.
+          violet: "#3b82f6",
+          blue: "#3b82f6",
           magenta: "#ec4899",
           lime: "#a3e635",
         },
