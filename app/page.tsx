@@ -13,10 +13,7 @@ import {
   Plus,
   Play,
 } from "lucide-react";
-import { InteractiveRobotSpline } from "@/components/blocks/interactive-3d-robot";
-
-const ROBOT_SCENE_URL =
-  "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
+import { Whobee } from "@/components/blocks/whobee";
 
 // ───── brand mark (inline svg) ─────
 function BrandMark({ className = "" }: { className?: string }) {
@@ -145,16 +142,11 @@ export default function Page() {
             </div>
           </div>
 
-          {/* RIGHT — 3D robot */}
+          {/* RIGHT — custom Whobee 3D robot (GLB loaded via R3F) */}
           <div className="relative h-[420px] w-full sm:h-[520px] lg:h-[640px]">
-            <div className="absolute inset-0 rounded-3xl">
-              <InteractiveRobotSpline
-                scene={ROBOT_SCENE_URL}
-                className="h-full w-full"
-              />
-            </div>
+            <Whobee className="absolute inset-0" />
             {/* soft vignette so robot edges blend into page bg */}
-            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_at_center,transparent_55%,#05050a_95%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,#05050a_95%)]" />
           </div>
         </div>
       </section>

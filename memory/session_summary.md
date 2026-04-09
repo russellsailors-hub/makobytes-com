@@ -2,38 +2,33 @@
 name: Session Summary
 description: Latest session state for resuming work
 type: project
-updated: 2026-04-10
+updated: 2026-04-09
 ---
 
 ## What happened
 
-Russell requested color feedback on the makobytes.com landing page. Identified three separate design concerns: (1) Whobee 3D robot is purple, (2) the floor mesh below Whobee needs removal, (3) the entire site uses purple/violet accents throughout. Provided honest assessment that Whobee and floor live in an external Spline scene file (can't edit from code), outlined 3 real options for each issue.
+Session focused on getting a 3D `.glb` model for Whobee (the robot) from Meshy. Russell generated a Pixar-style 2D image (blue chrome robot with glowing cyan eyes) but needs the actual 3D model file. Blue recolor of makobytes.com already complete (electric blue #3b82f6 across all CSS). Hit clarification point: unsure if Russell has the `.glb` file or a texture image file from Meshy.
 
 ## What's now in place
 
-- ✅ Next.js 14 landing page deployed and live with Whobee 3D robot
-- ✅ Full color issue diagnosis complete with 3 options per problem:
-  - **Whobee color:** Option A (CSS hue-rotate, hacky), Option B (Spline remix, 20 min work), Option C (swap robot entirely)
-  - **Floor removal:** Spline remix (clean) or CSS crop (quick hack)
-  - **Site-wide recolor:** Shift `glow-violet` (#8b5cf6) → `glow-blue` (#3b82f6) across entire codebase (~10 min job)
-- ✅ Recommendations made: **Option B or C + site-wide recolor**
+- ✅ Meshy Text-to-Image generated perfect robot visual (blue/chrome, Pixar, no floor)
+- ✅ makobytes.com recolored from purple to electric blue (4 files modified, committed as `8f47eed`)
+- ✅ Next.js rebuild complete with Spline robot placeholder in hero
+- ✅ `public/` folder ready for custom `.glb` asset
 
 ## Next step when Russell returns
 
-Russell must choose and communicate:
-1. **Whobee color:** A (hue-rotate), B (remix in Spline), or C (swap robot)?
-2. **Floor removal:** Spline remix or CSS crop?
-3. **Site-wide recolor:** Yes now, or wait?
+1. **Clarify file status**: Do you have a `.glb` file, or just a texture image (`.png`)?
+   - If `.glb`: Rename to `whobee.glb` → Move to `public/` → Update robot component
+   - If just image: Go back to Meshy → Use **Image-to-3D** (pink button, bottom-right) → Generate 3D (~60 sec) → Download GLB
 
-Once Russell decides, implementation is straightforward:
-- **If Option A:** Apply CSS filter to robot container (5 min)
-- **If Option B:** Russell spends 20 min remixing in Spline, sends new `.splinecode` URL, I swap it in
-- **If Option C:** I pick blue robot from Spline Community, swap URL (5 min)
-- **Site-wide recolor:** Search/replace `glow-violet` and related color refs across Tailwind classes (10 min)
+2. **Once `.glb` is in `public/`**: Update `components/blocks/interactive-3d-robot.tsx` to load local file instead of Spline
+
+3. **Test & commit**: Responsive check → git commit → git push → Vercel auto-deploys
 
 ## Important context
 
-- Whobee lives at external Spline URL `prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode` — not owned by us, can't edit materials directly
-- Floor is 3D geometry in scene, not CSS-maskable cleanly
-- All site buttons, gradients, borders, icons, pricing card glow use `glow-violet` — must be coordinated
-- Russell's "I hate purple" comment suggests broader palette preference; recommend full recolor for cohesive feel
+- **Robot design locked** — Don't regenerate; the Pixar look is final
+- **Meshy Image-to-3D** takes ~60 sec but preserves exact design
+- **All site colors already blue** — No more recoloring needed
+- **Last assistant message** asked Russell to confirm file status (texture vs `.glb`)

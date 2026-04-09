@@ -53,11 +53,11 @@ updated: 2026-04-09
 
 ## In Progress / Next Up
 
-1. **Resolve GitHub email privacy push conflict**: Either disable "Block command line pushes that expose my email" in github.com/settings/emails, OR provide noreply email for re-commit
-2. **Re-run push to GitHub**: Once email issue resolved, execute git push to upload makobytes.com rebuild
-3. **Verify Vercel integration**: Check if repo already connected to Vercel; if yes, auto-deploy will trigger on push; if no, complete initial setup
-4. **Verify live deployment**: Test makobytes.com live URL, confirm DNS + Vercel serving site correctly
-5. **Continue PromptPixel licensing flow**: Return to license key delivery verification (Polar benefit grant status)
+1. **Generate 3D robot from Meshy Image-to-3D**: Use the generated Pixar-style 2D image as input to Meshy's Image-to-3D feature (or Text-to-3D fallback); download as `.glb`
+2. **Place whobee.glb in public/ folder**: Rename downloaded model to `whobee.glb` and move to project root `public/` directory
+3. **Update robot component to load local .glb**: Modify interactive-3d-robot.tsx to load `./whobee.glb` instead of external Spline scene URL
+4. **Test and verify robot rendering**: Hard refresh site, check robot displays correctly, test interactivity (rotation, zoom)
+5. **Commit, push, and auto-deploy**: Git add, commit, push to main → Vercel auto-deploys updated site
 
 ## Blocked / Waiting On
 
