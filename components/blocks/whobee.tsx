@@ -23,34 +23,96 @@ function WhobeeModel({ mouse }: { mouse: { x: number; y: number } }) {
     { active: false, t: 0, double: false },
   );
 
-  // Find materials that look like eyes (bright / emissive / cyan-ish).
-  // We cache references so we can animate them every frame.
+  // Find materials that look like eyes. Meshy's image-to-3D bakes eye glow
+  // into the base color texture map, so material.color is often neutral.
+  // We use several heuristics AND log everything for diagnosis.
   const eyeMaterials = useMemo(() => {
     const found: THREE.MeshStandardMaterial[] = [];
+    const debugLog: Array<{
+      mesh: string;
+      material: string;
+      color: string;
+      hasMap: boolean;
+      emissive: string;
+      picked: boolean;
+      reason: string;
+    }> = [];
+
     gltf.scene.traverse((obj) => {
       if ((obj as THREE.Mesh).isMesh) {
         const mesh = obj as THREE.Mesh;
+        const meshName = (mesh.name || "").toLowerCase();
         const mats = Array.isArray(mesh.material)
           ? mesh.material
           : [mesh.material];
+
         mats.forEach((m) => {
           if (!(m instanceof THREE.MeshStandardMaterial)) return;
-          const name = (m.name || "").toLowerCase();
+          const matName = (m.name || "").toLowerCase();
           const col = m.color;
-          // Heuristic: material is named eye/lens/glow OR color is strongly
-          // blue-green (cyan-ish) — robotic "glowing eye" look.
-          const nameMatch = /eye|lens|glow|light|led/.test(name);
-          const cyanMatch = col.b > 0.5 && col.g > 0.4 && col.r < 0.4;
-          if (nameMatch || cyanMatch) {
-            // Make sure emissive is set up so we can animate intensity
+
+          // Heuristics (OR'd together):
+          // 1. material name contains eye/lens/glow/light/led/screen/face
+          const matNameMatch =
+            /eye|lens|glow|light|led|screen|face|visor|display/.test(matName);
+          // 2. mesh name contains those keywords
+          const meshNameMatch =
+            /eye|lens|glow|light|led|screen|face|visor|display|head/.test(
+              meshName,
+            );
+          // 3. solid color is cyan-ish (loose threshold)
+          const cyanMatch =
+            col.b > 0.45 && col.g > 0.35 && col.r < 0.55 && col.b > col.r;
+          // 4. already has emissive intensity > 0 (Meshy marked it as glowing)
+          const emissiveMatch =
+            m.emissiveIntensity > 0.01 &&
+            (m.emissive.b > 0.3 || m.emissive.g > 0.3);
+
+          let picked = false;
+          let reason = "";
+          if (matNameMatch) {
+            picked = true;
+            reason = "material-name";
+          } else if (meshNameMatch) {
+            picked = true;
+            reason = "mesh-name";
+          } else if (cyanMatch) {
+            picked = true;
+            reason = "cyan-color";
+          } else if (emissiveMatch) {
+            picked = true;
+            reason = "pre-emissive";
+          }
+
+          if (picked) {
             m.emissive = new THREE.Color("#22d3ee");
-            m.emissiveIntensity = 1.8;
+            m.emissiveIntensity = 2.0;
             m.toneMapped = false;
             found.push(m);
           }
+
+          debugLog.push({
+            mesh: mesh.name || "(unnamed)",
+            material: m.name || "(unnamed)",
+            color: `rgb(${col.r.toFixed(2)}, ${col.g.toFixed(2)}, ${col.b.toFixed(2)})`,
+            hasMap: !!m.map,
+            emissive: `rgb(${m.emissive.r.toFixed(2)}, ${m.emissive.g.toFixed(2)}, ${m.emissive.b.toFixed(2)}) @${m.emissiveIntensity.toFixed(2)}`,
+            picked,
+            reason,
+          });
         });
       }
     });
+
+    // eslint-disable-next-line no-console
+    console.log("🤖 [Whobee] GLB inspection:");
+    // eslint-disable-next-line no-console
+    console.table(debugLog);
+    // eslint-disable-next-line no-console
+    console.log(
+      `🤖 [Whobee] Picked ${found.length} material(s) as eyes. If this is wrong, share the table above with Claude.`,
+    );
+
     return found;
   }, [gltf]);
 

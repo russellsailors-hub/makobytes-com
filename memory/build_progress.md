@@ -2,7 +2,7 @@
 name: Build Progress
 description: Running log of completed and pending work
 type: project
-updated: 2026-04-09
+updated: 2026-04-10
 ---
 
 ## Done
@@ -50,20 +50,22 @@ updated: 2026-04-09
 - **Created makobytes.com landing page**: Dark premium design with Viktor Oddy style, glassmorphism effects, responsive layout, PromptPixel feature showcase, $25 pricing, Polar buy link integration, updated to blue/silver/grey/white color scheme with Main Logo.png branding, added comprehensive SEO meta tags and structured data, expanded to software catalog with products section, created dedicated PromptPixel product page with features, screenshots, and detailed information
 - **Rebuilt makobytes.com as Next.js 14 project**: Full TypeScript + Tailwind + shadcn scaffolding, Spline Whobee robot integrated in hero, inline SVG brand mark, all landing sections ported, 18 files + 1175 lines total, local build verified
 - **Committed Next.js rebuild locally**: Commit `0fdc92d` created on main branch with full source code
+- **Generated Meshy AI Whobee robot**: Blue chrome textured 3D robot created via Meshy Image-to-3D, exported as `.glb` file (`Meshy_AI_Blue_Chrome_Robot_0409231248_texture.glb`)
+- **Committed Spline → Whobee GLB swap**: Commit `396d329` created with interactive-3d-robot.tsx modified to load local `./whobee.glb` instead of Spline scene URL
+- **Verified partial build on live site**: UI changes (blue button, split layout) visible on production, confirming Vercel build completed, but old Spline robot still cached in browser (3D model not updated)
 
 ## In Progress / Next Up
 
-1. **Generate 3D robot from Meshy Image-to-3D**: Use the generated Pixar-style 2D image as input to Meshy's Image-to-3D feature (or Text-to-3D fallback); download as `.glb`
-2. **Place whobee.glb in public/ folder**: Rename downloaded model to `whobee.glb` and move to project root `public/` directory
-3. **Update robot component to load local .glb**: Modify interactive-3d-robot.tsx to load `./whobee.glb` instead of external Spline scene URL
-4. **Test and verify robot rendering**: Hard refresh site, check robot displays correctly, test interactivity (rotation, zoom)
-5. **Commit, push, and auto-deploy**: Git add, commit, push to main → Vercel auto-deploys updated site
+1. **Verify Vercel build and production status**: Check vercel.com/dashboard → makobytes-com → Deployments. Confirm commit `396d329` shows **Ready** status and is promoted to **Production**
+2. **Clear browser cache and test**: DevTools → right-click refresh → "Empty Cache and Hard Reload"; also test in incognito window
+3. **Confirm whobee.glb is in public/ folder**: If robot still shows as old Spline after cache clear, verify `.glb` file placement and component import path
+4. **Check Network tab for 404 errors**: If needed, inspect DevTools Network tab for `/whobee.glb` request to confirm successful load (200 OK)
 
 ## Blocked / Waiting On
 
+- **Whobee robot caching on production** — Vercel build succeeded, but old Spline model still showing in browser; likely service worker or CDN cache. Investigating cache clearing strategy.
 - **License key delivery clarification** — Investigating Polar dashboard structure to determine if benefit was actually granted; may require product reconfiguration
 - **Polar account review** — Paused until license key flow is verified to work end-to-end
-- **makobytes.com status** — Site must be live or properly parked before final review submission
 
 ## Notes
 
