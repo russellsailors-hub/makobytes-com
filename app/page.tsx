@@ -83,78 +83,79 @@ export default function Page() {
         </div>
       </nav>
 
-      {/* ───── HERO with 3D ROBOT ───── */}
-      <section id="top" className="relative h-screen w-full overflow-hidden">
-        {/* 3D robot background */}
-        <div className="absolute inset-0 z-0">
-          <InteractiveRobotSpline
-            scene={ROBOT_SCENE_URL}
-            className="h-full w-full"
-          />
-        </div>
+      {/* ───── HERO with 3D ROBOT (split layout) ───── */}
+      <section
+        id="top"
+        className="relative min-h-screen w-full overflow-hidden pt-16"
+      >
+        {/* ambient radial glow behind robot */}
+        <div className="pointer-events-none absolute inset-0 z-0 grid-overlay opacity-40" />
 
-        {/* ambient overlays */}
-        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-ink-950/60 via-transparent to-ink-950" />
-        <div className="pointer-events-none absolute inset-0 z-10 grid-overlay opacity-60" />
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-8 px-6 lg:grid-cols-2 lg:gap-4">
+          {/* LEFT — text (compact) */}
+          <div className="relative z-20 flex flex-col items-start text-left">
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
+              <span className="mono-tag text-white/80">
+                v1.0 · shipping now
+              </span>
+            </div>
 
-        {/* content */}
-        <div className="pointer-events-none relative z-20 flex h-full flex-col items-center justify-center px-4 pt-16 text-center md:px-8">
-          <div className="pointer-events-auto inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-            <span className="mono-tag text-white/80">
-              v1.0 · shipping now · windows + macos
-            </span>
+            <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              <span className="text-gradient">Screenshot in.</span>
+              <br />
+              <span className="text-gradient-violet">Perfect prompt out.</span>
+            </h1>
+
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">
+              Capture any pixel. Get a paste-ready AI prompt in under a second.
+              Meet Whobee →
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#buy"
+                className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
+              >
+                Get it — $25
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#how"
+                className="flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-6 py-3.5 font-semibold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
+              >
+                <Play className="h-3.5 w-3.5" fill="currentColor" />
+                See it work
+              </a>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/40">
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                one-time
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                no subscription
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                lifetime updates
+              </span>
+            </div>
           </div>
 
-          <h1 className="mt-8 max-w-5xl text-5xl font-black leading-[0.95] tracking-tight drop-shadow-2xl sm:text-7xl lg:text-8xl">
-            <span className="text-gradient">Screenshot in.</span>
-            <br />
-            <span className="text-gradient-violet">Perfect prompt out.</span>
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 drop-shadow-lg sm:text-xl">
-            PromptPixel captures any pixel on your screen, pulls the text with
-            precision OCR, and rewrites it as a paste-ready AI prompt — in
-            under a second. Say hi to Whobee, your new prompt co-pilot.
-          </p>
-
-          <div className="pointer-events-auto mt-10 flex flex-col items-center gap-4 sm:flex-row">
-            <a
-              href="#buy"
-              className="btn-glow flex items-center gap-2 rounded-xl px-8 py-4 font-semibold text-white"
-            >
-              Download for $25
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#how"
-              className="flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-8 py-4 font-semibold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
-            >
-              <Play className="h-4 w-4" fill="currentColor" />
-              Watch it work
-            </a>
+          {/* RIGHT — 3D robot */}
+          <div className="relative h-[420px] w-full sm:h-[520px] lg:h-[640px]">
+            <div className="absolute inset-0 rounded-3xl">
+              <InteractiveRobotSpline
+                scene={ROBOT_SCENE_URL}
+                className="h-full w-full"
+              />
+            </div>
+            {/* soft vignette so robot edges blend into page bg */}
+            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_at_center,transparent_55%,#05050a_95%)]" />
           </div>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/50">
-            <span className="flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-green-400" strokeWidth={3} />
-              One-time payment
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-green-400" strokeWidth={3} />
-              No subscription
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-green-400" strokeWidth={3} />
-              Lifetime updates
-            </span>
-          </div>
-        </div>
-
-        {/* scroll cue */}
-        <div className="pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2 animate-float">
-          <div className="mono-tag text-white/40">scroll</div>
-          <div className="mx-auto mt-2 h-8 w-px bg-gradient-to-b from-white/40 to-transparent" />
         </div>
       </section>
 
