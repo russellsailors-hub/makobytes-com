@@ -91,9 +91,9 @@ const apps: MakoApp[] = [
   {
     slug: "aipromptshive",
     name: "AI Prompt Hive",
-    tagline: "Free cloud storage for AI prompts.",
+    tagline: "A marketplace for creative intelligence.",
     description:
-      "Save, organize, and reuse your best AI prompts in one place. Free to use, no account walls. Built for people who talk to AI all day.",
+      "Save, organize, and share your best AI prompts in one place. Free prompt storage built for people who talk to AI all day.",
     status: "available",
     price: "Free",
     platform: "Web",
