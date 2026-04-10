@@ -241,14 +241,9 @@ export default function MakoBytesHub() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link href="/" className="group flex items-center gap-2.5">
             <BrandMark />
-            <div className="flex flex-col leading-none">
-              <span className="font-bold tracking-tight text-white">
-                MakoBytes
-              </span>
-              <span className="mono-tag text-[10px] text-white/40">
-                desktop · ai · tools
-              </span>
-            </div>
+            <span className="text-lg font-bold tracking-tight text-white">
+              MakoBytes
+            </span>
           </Link>
           <div className="hidden items-center gap-8 text-sm text-white/70 md:flex">
             <a href="#apps" className="transition hover:text-white">
