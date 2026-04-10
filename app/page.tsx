@@ -6,6 +6,7 @@ import {
   ArrowRight,
   Camera,
   Clock,
+  Library,
   Lock,
   Sparkles,
   Wrench,
@@ -88,14 +89,17 @@ const apps: MakoApp[] = [
     Icon: Camera,
   },
   {
-    slug: "coming-soon-1",
-    name: "App Two",
-    tagline: "Coming soon.",
+    slug: "aipromptshive",
+    name: "AI Prompt Hive",
+    tagline: "Free cloud storage for AI prompts.",
     description:
-      "Next in the MakoBytes catalog. Same philosophy — fast, private, one-time purchase.",
-    status: "coming-soon",
+      "Save, organize, and reuse your best AI prompts in one place. Free to use, no account walls. Built for people who talk to AI all day.",
+    status: "available",
+    price: "Free",
+    platform: "Web",
+    href: "https://aipromptshive.com",
     accent: "cyan",
-    Icon: Sparkles,
+    Icon: Library,
   },
   {
     slug: "coming-soon-2",
@@ -202,6 +206,14 @@ function AppCard({ app }: { app: MakoApp }) {
   );
 
   if (isAvailable && app.href) {
+    const isExternal = app.href.startsWith("http");
+    if (isExternal) {
+      return (
+        <a href={app.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+          {CardInner}
+        </a>
+      );
+    }
     return (
       <Link href={app.href} className="block h-full">
         {CardInner}
