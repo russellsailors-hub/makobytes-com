@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     "OCR",
     "ChatGPT workflow",
     "Claude workflow",
+    "AI Prompt Hive",
+    "AI prompts",
+    "prompt storage",
+    "save AI prompts",
   ],
   authors: [{ name: "MakoBytes" }],
   openGraph: {
