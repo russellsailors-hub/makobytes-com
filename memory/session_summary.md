@@ -7,27 +7,28 @@ updated: 2026-04-10
 
 ## What happened
 
-Russell pivoted the makobytes.com hero from a static 3D robot (Spline + Meshy .glb) to a talking robot explainer video. After ~2 hours exploring interactive 3D (merged materials, no rig, blinking workaround complexity), decided video sells the product better than decoration. Locked full 4-step production workflow: script → voice (ElevenLabs) → video animation (Hedra/HeyGen/D-ID) → embed mp4 in hero. Created `project_hero_direction.md` documenting the pivot and workflow.
+Continued refinement of makobytes.com Next.js site navigation rendering. Fixed two nav bar layout issues: (1) Hub nav brand "MakoBytes" was wrapping to multiple lines in narrow widths, (2) PromptPixel nav had the same problem with "PromptPixel by MakoBytes" text. Both nav components now use single-line brand text to prevent layout clipping and visual regression. Pushed commit `feae39d` with PromptPixel nav flatten to match hub nav fix.
 
 ## What's now in place
 
-- **Hero pivot decision finalized**: Talking video explainer > decorative 3D model
-- **3-script options drafted** (cheerful 30s, short 15s, funny 20s) — Russell to pick vibe
-- **Production workflow locked**: ElevenLabs (voice), Hedra (video animation), HTML5 `<video>` embed
-- **Fallback preserved**: Meshy `.glb` and R3F code kept until video is ready
-- **Team structure clear**: Russell handles tools (script voice, Hedra animation), Claude handles code (video embed, captions, bundle cleanup)
+- **Hub nav brand**: Cube logo + "MakoBytes" on one line, no wrapping
+- **PromptPixel nav brand**: Logo + "PromptPixel by MakoBytes" on one line (with "by MakoBytes" in smaller grey text inline)
+- **Both changes deployed**: Commit `feae39d` pushed to main, Vercel building
+- **Working site**: makobytes.com hub + /promptpixel product page with fixed nav rendering
 
 ## Next step when Russell returns
 
-1. **Pick script vibe**: Cheerful, funny, or techy? Reply with which of the 3 options
-2. **Generate voice**: ElevenLabs free tier → pick voice → generate mp3 from final script
-3. **Animate robot**: Hedra (recommended) → upload 2D robot PNG from earlier Meshy run → upload mp3 → generate mp4 (takes ~2-5 min)
-4. **Drop video in public/**: Place `whobee.mp4` in `public/` folder, reply with filename
-5. **I embed in hero**: Remove R3F, swap HTML5 video, add captions, optimize bundle
+1. **Hard refresh production** (Ctrl+Shift+R or incognito) after Vercel finishes deploy
+2. **Verify one of 4 scenarios**:
+   - ✅ Scenario 1: Hub nav looks clean (cube + "MakoBytes" one line) → **Done, stop here**
+   - ✅ Scenario 2: PromptPixel nav looks clean (logo + text one line) → **Done, stop here**
+   - ❌ Scenario 3: You still see "DESKTOP · AI · TOOLS" → Vercel hasn't deployed or cache sticky, try incognito
+   - ❌ Scenario 4: Something else overlapping → Send screenshot for debugging
+3. **If clean**: Move to next priority (hero video pivot, PromptPixel app features, or marketing)
 
 ## Important context
 
-- 2D robot PNG: Should still exist from earlier Meshy Text-to-Image run (generated ~2026-04-09). If lost, regenerate via Meshy in 30 seconds
-- Video tools all free tier: ElevenLabs 10k chars/month (enough for 30s script), Hedra 1 generation free, worst case $10-20 one-time
-- Whobee (robot mascot) is now a talking character, not a 3D asset — product narrative > 3D eye candy
-- R3F bundle bloat: three.js dependencies (~500 KB) can delete once video is live
+- Vercel deploy time: Usually 1–2 minutes from push
+- Browser cache can stick old nav text — hard refresh (Ctrl+Shift+R) is required, not just F5
+- Both navs use Tailwind responsive classes and whitespace-nowrap to prevent wrapping
+- Site is live at makobytes.com, PromptPixel product page at /promptpixel

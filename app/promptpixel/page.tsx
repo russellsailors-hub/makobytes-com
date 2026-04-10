@@ -98,13 +98,16 @@ export default function PromptPixelPage() {
       {/* ───── NAV ───── */}
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <Link href="/" className="group flex items-center gap-2.5">
+          <Link
+            href="/"
+            className="group flex items-center gap-2.5 whitespace-nowrap"
+          >
             <BrandMark />
             <span className="text-lg font-bold tracking-tight text-white">
               PromptPixel
-              <span className="ml-2 text-xs font-normal text-white/40">
-                by MakoBytes
-              </span>
+            </span>
+            <span className="mono-tag hidden text-[10px] text-white/40 sm:inline">
+              by makobytes
             </span>
           </Link>
           <div className="hidden items-center gap-8 text-sm text-white/70 md:flex">
