@@ -2,7 +2,7 @@
 name: Build Progress
 description: Running log of completed and pending work
 type: project
-updated: 2026-04-10T00:13
+updated: 2026-04-10T20:53
 ---
 
 ## Done
@@ -53,16 +53,18 @@ updated: 2026-04-10T00:13
 - **Generated Meshy AI Whobee robot**: Blue chrome textured 3D robot created via Meshy Image-to-3D, exported as `.glb` file (`Meshy_AI_Blue_Chrome_Robot_0409231248_texture.glb`)
 - **Committed Spline → Whobee GLB swap**: Commit `396d329` created with interactive-3d-robot.tsx modified to load local `./whobee.glb` instead of Spline scene URL
 - **Verified partial build on live site**: UI changes (blue button, split layout) visible on production, confirming Vercel build completed, but old Spline robot still cached in browser (3D model not updated)
+- **Analyzed download tracking requirements**: Identified precondition — Download button is placeholder (`href="#download"`), no real .exe hosting yet. Evaluated 4 approaches: A (Vercel Analytics + GitHub, 30min free), B (Plausible/Umami, 1-2hr $0-9/mo), C (custom dashboard, 4-6hr), D (A now + C later). Recommended Option A as optimal for current stage.
 
 ## In Progress / Next Up
 
-1. **Verify Vercel build and production status**: Check vercel.com/dashboard → makobytes-com → Deployments. Confirm commit `396d329` shows **Ready** status and is promoted to **Production**
-2. **Clear browser cache and test**: DevTools → right-click refresh → "Empty Cache and Hard Reload"; also test in incognito window
-3. **Confirm whobee.glb is in public/ folder**: If robot still shows as old Spline after cache clear, verify `.glb` file placement and component import path
-4. **Check Network tab for 404 errors**: If needed, inspect DevTools Network tab for `/whobee.glb` request to confirm successful load (200 OK)
+1. **Russell to answer precondition questions**: Where will PromptPixel.exe be hosted? (GitHub/S3/Vercel/own server) + Is a real installer ready now?
+2. **Russell to pick download tracking approach**: A (Vercel + GitHub) / B (Plausible) / C (custom) / D (staged)
+3. **Fix Download button**: Once hosting decision made, link button to real .exe / GitHub Release / or "join waitlist" form
+4. **Implement chosen analytics**: Set up tracking based on Russell's selection
 
 ## Blocked / Waiting On
 
+- **Exe hosting infrastructure decision** — Russell must specify where PromptPixel.exe will live before proceeding with download tracking
 - **Whobee robot caching on production** — Vercel build succeeded, but old Spline model still showing in browser; likely service worker or CDN cache. Investigating cache clearing strategy.
 - **License key delivery clarification** — Investigating Polar dashboard structure to determine if benefit was actually granted; may require product reconfiguration
 - **Polar account review** — Paused until license key flow is verified to work end-to-end

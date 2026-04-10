@@ -21,6 +21,8 @@ import {
   Save,
 } from "lucide-react";
 import { PromptPixelDemo } from "@/components/blocks/promptpixel-demo";
+import { TrackPageView } from "@/components/admin/track-pageview";
+import { TrackLink } from "@/components/admin/track-link";
 
 export const metadata: Metadata = {
   title:
@@ -52,6 +54,7 @@ function BrandMark({ className = "" }: { className?: string }) {
 export default function PromptPixelPage() {
   return (
     <main className="relative min-h-screen bg-ink-950 text-white">
+      <TrackPageView type="pageview_promptpixel" page="/promptpixel" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -127,12 +130,14 @@ export default function PromptPixelPage() {
               FAQ
             </a>
           </div>
-          <a
+          <TrackLink
             href="#download"
+            type="click_download"
+            meta={{ source: "nav" }}
             className="btn-glow rounded-lg px-5 py-2 text-sm font-semibold text-white"
           >
             Download free
-          </a>
+          </TrackLink>
         </div>
       </nav>
 
@@ -166,13 +171,15 @@ export default function PromptPixelPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
+              <TrackLink
                 href="#download"
+                type="click_download"
+                meta={{ source: "hero" }}
                 className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
               >
                 Download free for Windows
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </TrackLink>
               <a
                 href="#how"
                 className="flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-6 py-3.5 font-semibold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
@@ -534,13 +541,15 @@ export default function PromptPixelPage() {
                   ))}
                 </ul>
 
-                <a
+                <TrackLink
                   href="#buy"
+                  type="click_buy"
+                  meta={{ source: "pricing_card" }}
                   className="btn-glow mt-10 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold text-white"
                 >
                   Buy Pro — $25
                   <ArrowRight className="h-5 w-5" />
-                </a>
+                </TrackLink>
                 <p className="mono-tag mt-3 text-center text-white/40">
                   perpetual license · 12 months of updates
                 </p>
@@ -667,13 +676,15 @@ export default function PromptPixelPage() {
             Free for Windows. Pro is $25 once, never again.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
+            <TrackLink
               href="#download"
+              type="click_download"
+              meta={{ source: "final_cta" }}
               className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold text-white"
             >
               Download free
               <ArrowRight className="h-5 w-5" />
-            </a>
+            </TrackLink>
             <a
               href="#pricing"
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-10 py-5 text-lg font-bold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"

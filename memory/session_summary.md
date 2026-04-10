@@ -2,34 +2,33 @@
 name: Session Summary
 description: Latest session state for resuming work
 type: project
-updated: 2026-04-09
+updated: 2026-04-10
 ---
 
 ## What happened
 
-Extended work on makobytes.com Next.js site with multiple refinement phases. Early session focused on fixing nav rendering (Hub/PromptPixel brand text wrapping). Mid-session pivoted to demo reel visual improvements: added scroll-margin-top offsets to anchor navigation targets (apps, features, faq sections). Final push is requesting screenshots for two new demo frames: **Prompt Picker** and **Auto-Save Backups** Pro features. The Pro features page text was already corrected and deployed (commit `5071848`) with real Ctrl+Alt+P hotkey and Pictures\PromptPixel default folder paths.
+Session analyzed download tracking requirements for PromptPixel.exe. Identified critical precondition: the placeholder Download button (`href="#download"`) doesn't link to anything real yet. Before building any custom analytics dashboard, Russell must decide: (1) where the .exe will be hosted, (2) whether an installer exists now or is planned.
+
+Claude presented 4 download tracking options ranked by effort, ranging from 30-minute free Vercel Analytics + GitHub Releases to full custom admin dashboard (4-6 hours). Session ended awaiting Russell's decision on approach + clarification on deployment infrastructure.
 
 ## What's now in place
 
-- **Nav fixes deployed**: Hub and PromptPixel navs rendering cleanly (commit `feae39d`)
-- **Scroll anchor fixes live**: apps/features/faq sections now have scroll-mt-20 offsets for proper anchor navigation (helps demo reel linking)
-- **Pro features text accurate**: Ctrl+Alt+P hotkey, Pictures\PromptPixel folder, example prompts all correct in page copy
-- **makobytes.com live**: Full Next.js 14 site with Whobee 3D robot, blue/silver theme, responsive design
-- **Demo reel ready for expansion**: Currently 5 frames (OCR, Voice, Settings, Pro Grid, FAQ), waiting for two new Pro feature screenshots to add frames 6–7
+- **makobytes.com landing page live**: Next.js 14 rebuild with dark premium design, Whobee 3D robot (Meshy AI), feature showcase, pricing section, PromptPixel product page
+- **Polar integration active**: $25 perpetual license + 12-month updates configured, first real sale ($25) processed successfully
+- **PromptPixel v2.0.0-alpha r65–r66 built**: License activation wired to Polar customer-portal API, hardcoded checkout URL functional
+- **Four download analytics options documented**: A (Vercel + GitHub, 30min free), B (Plausible/Umami, 1-2hr $0-9/mo), C (custom dashboard, 4-6hr), D (staged: A now, C later)
 
 ## Next step when Russell returns
 
-1. **Save Prompt Picker screenshot** to `C:\Users\Russell.Sailors\OneDrive\Desktop\Mako AI Projects\Web Projects\screencapture\Images\`
-   - Right-click chat image → Save As, or use Win+Shift+S snipper
-   - Save the Auto-Save Backups screenshot too (shown below Prompt Picker in same tab)
-2. **Reply "saved"** once files are in the folder
-3. Claude will: find newest files, copy to `public/screenshots/`, add two new demo frames to reel (Prompt Picker + Auto-Save Backups), update narration, commit, push
-4. Vercel will auto-deploy on push
+1. **Answer the precondition questions**: Where will PromptPixel.exe be hosted? Is a real installer ready now?
+2. **Pick the download tracking approach**: Recommend Option A (Vercel Analytics + GitHub Releases) — free, instant, 80% of what's needed
+3. **Fix the Download button**: Link to real .exe / GitHub Release / or "join waitlist" form
+4. **Then execute**: Implement chosen analytics approach
 
 ## Important context
 
-- Prompt Picker screenshot already visible in chat — just needs to be saved to disk
-- Auto-Save Backups screenshot appears below it (scroll to make it fully visible, then snip both)
-- Two frames will become frames 6–7 of 7 in demo reel (fills all 5 Pro features visually)
-- makobytes.com production URL already live at makobytes.com
-- Commit history: feae39d (nav fix), 5071848 (Pro features text), 396d329 (Whobee robot)
+- Custom admin dashboards are premature before binary hosting is locked down
+- Vercel Analytics + GitHub auto-count both pageviews and downloads with zero code
+- GitHub Releases auto-tracks .exe downloads per version (free, forever)
+- Russell hasn't yet decided on .exe hosting strategy (GitHub/S3/Vercel/own server)
+- Stop hook working correctly — session resumable cleanly next time

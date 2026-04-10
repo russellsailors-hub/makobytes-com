@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackPageView } from "@/components/admin/track-pageview";
+import { TrackLink } from "@/components/admin/track-link";
 import {
   ArrowRight,
   Camera,
@@ -220,6 +222,7 @@ function AppCard({ app }: { app: MakoApp }) {
 export default function MakoBytesHub() {
   return (
     <main className="relative min-h-screen bg-ink-950 text-white">
+      <TrackPageView type="pageview_home" page="/" />
       {/* JSON-LD: Organization */}
       <script
         type="application/ld+json"
@@ -262,12 +265,14 @@ export default function MakoBytesHub() {
               Contact
             </a>
           </div>
-          <Link
+          <TrackLink
             href="/promptpixel"
+            type="click_app_card"
+            meta={{ source: "nav", app: "promptpixel" }}
             className="btn-glow rounded-lg px-5 py-2 text-sm font-semibold text-white"
           >
             PromptPixel — $25
-          </Link>
+          </TrackLink>
         </div>
       </nav>
 
