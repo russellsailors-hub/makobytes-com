@@ -384,7 +384,7 @@ export default function MakoBytesHub() {
               {
                 Icon: Clock,
                 title: "Pay once. Own it.",
-                body: "No subscriptions. No renewals. No 'pro tier.' One payment gets you the current version and every future update. Forever.",
+                body: "Buy a MakoBytes app and you own it. The current version keeps working forever — no expiry, no nag screens, no feature loss. Updates are included for the first year, with an optional renewal if you want to keep getting new ones.",
               },
               {
                 Icon: Sparkles,

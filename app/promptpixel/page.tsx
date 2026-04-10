@@ -188,11 +188,11 @@ export default function PromptPixelPage() {
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
-                pro unlocks at $25 once
+                pro $25 once · 1 yr updates
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
-                no subscription
+                no forced subscription
               </span>
             </div>
           </div>
@@ -509,13 +509,13 @@ export default function PromptPixelPage() {
                 <ul className="mt-8 space-y-3 text-sm">
                   {[
                     "Everything in Free",
-                    "Prompt Picker (full prompt library)",
+                    "Prompt Picker (Ctrl+Alt+P)",
                     "Auto-Save Backups",
                     "OCR text extraction (Ctrl+Alt+T)",
                     "Voice to Prompt (Ctrl+Alt+V)",
                     "Multi-Target Hotkeys",
                     "Recent captures raised to 50",
-                    "Lifetime updates",
+                    "1 year of updates included",
                     "Priority email support",
                     "30-day money-back guarantee",
                   ].map((item) => (
@@ -540,7 +540,12 @@ export default function PromptPixelPage() {
                   <ArrowRight className="h-5 w-5" />
                 </a>
                 <p className="mono-tag mt-3 text-center text-white/40">
-                  one-time payment · instant license
+                  one-time · year 1 of updates included
+                </p>
+                <p className="mt-2 text-center text-[11px] leading-relaxed text-white/40">
+                  After year 1: keep what you have forever (no nag, no
+                  expiry) — or renew updates for{" "}
+                  <span className="text-white/60">$15/year</span>.
                 </p>
               </div>
             </div>

@@ -149,6 +149,22 @@ const FRAMES: Frame[] = [
       toY: 0,
     },
   },
+  {
+    src: "/screenshots/settings-backups.png",
+    alt: "Pro tab — Auto-Save Backups settings",
+    chapter: "08 / pro: auto-save backups",
+    title: "Never lose a capture.",
+    subtitle:
+      "Every screenshot saved as a timestamped PNG to a folder you choose. Default: Pictures\\PromptPixel. Recover, browse, or share any past capture later.",
+    kenBurns: {
+      fromScale: 1.0,
+      toScale: 1.06,
+      fromX: 0,
+      toX: 0,
+      fromY: -2,
+      toY: 4,
+    },
+  },
 ];
 
 export function PromptPixelDemo({ className }: { className?: string }) {
