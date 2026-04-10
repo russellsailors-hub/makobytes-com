@@ -39,30 +39,43 @@ export default async function AdminDashboard() {
   const configured = isStorageConfigured();
 
   const [
-    totalPageviews,
-    todayPageviews,
+    totalPvHome,
+    totalPvProduct,
+    todayPvHome,
+    todayPvProduct,
     totalDownloads,
     todayDownloads,
     totalBuys,
     todayBuys,
     totalAppCardClicks,
     todayAppCardClicks,
-    pageviewsTrend,
+    pvHomeTrend,
+    pvProductTrend,
     downloadsTrend,
     recentEvents,
   ] = await Promise.all([
-    getTotal("pageview"),
-    getToday("pageview"),
+    getTotal("pageview_home"),
+    getTotal("pageview_promptpixel"),
+    getToday("pageview_home"),
+    getToday("pageview_promptpixel"),
     getTotal("click_download"),
     getToday("click_download"),
     getTotal("click_buy"),
     getToday("click_buy"),
     getTotal("click_app_card"),
     getToday("click_app_card"),
-    getLastNDays("pageview", 14),
+    getLastNDays("pageview_home", 14),
+    getLastNDays("pageview_promptpixel", 14),
     getLastNDays("click_download", 14),
     getRecentEvents(50),
   ]);
+
+  const totalPageviews = totalPvHome + totalPvProduct;
+  const todayPageviews = todayPvHome + todayPvProduct;
+  const pageviewsTrend = pvHomeTrend.map((d, i) => ({
+    ...d,
+    count: d.count + (pvProductTrend[i]?.count ?? 0),
+  }));
 
   const productViews = await getTotal("pageview_promptpixel");
   const funnelStops = [

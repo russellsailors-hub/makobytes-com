@@ -71,7 +71,7 @@ export async function recordEvent(record: EventRecord): Promise<void> {
     await Promise.all([
       kv.incr(totalKey),
       kv.incr(dailyKey),
-      kv.lpush(EVENT_LOG_KEY, JSON.stringify(record)),
+      kv.lpush(EVENT_LOG_KEY, record),
       kv.ltrim(EVENT_LOG_KEY, 0, EVENT_LOG_MAX - 1),
     ]);
   } catch (err) {
@@ -137,11 +137,12 @@ export async function getRecentEvents(
 ): Promise<EventRecord[]> {
   if (!isKvConfigured()) return [];
   try {
-    const raw = await kv.lrange<string>(EVENT_LOG_KEY, 0, limit - 1);
+    const raw = await kv.lrange<EventRecord | string>(EVENT_LOG_KEY, 0, limit - 1);
     return raw
       .map((s) => {
+        if (typeof s === "object" && s !== null) return s as EventRecord;
         try {
-          return JSON.parse(s) as EventRecord;
+          return JSON.parse(s as string) as EventRecord;
         } catch {
           return null;
         }
