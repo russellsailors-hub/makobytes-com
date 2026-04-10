@@ -102,9 +102,25 @@ const FRAMES: Frame[] = [
     },
   },
   {
+    src: "/screenshots/settings-prompt-picker.png",
+    alt: "Pro tab — Prompt Picker with saved prompts list",
+    chapter: "05 / pro: prompt picker",
+    title: "A library of prompts, one keystroke away.",
+    subtitle:
+      "Press Ctrl+Alt+P. A popup of your saved prompts opens. Pick one — PromptPixel captures the screen, pastes the image, and types that prompt. Add as many as you want.",
+    kenBurns: {
+      fromScale: 1.0,
+      toScale: 1.06,
+      fromX: 0,
+      toX: 0,
+      fromY: -2,
+      toY: 4,
+    },
+  },
+  {
     src: "/screenshots/settings-pro.png",
     alt: "Pro tab — OCR text extraction and voice prompt features",
-    chapter: "05 / pro: ocr + voice",
+    chapter: "06 / pro: ocr + voice",
     title: "Drag a box. Speak a prompt.",
     subtitle:
       "OCR pulls just the text on your clipboard — no image, no vision tokens. Voice prompts capture the screen while you talk. Both fully on-device.",
@@ -120,7 +136,7 @@ const FRAMES: Frame[] = [
   {
     src: "/screenshots/settings-pro-2.png",
     alt: "Pro tab — Multi-target hotkeys for pre-set prompts",
-    chapter: "06 / pro: multi-target hotkeys",
+    chapter: "07 / pro: multi-target hotkeys",
     title: "One hotkey, one workflow.",
     subtitle:
       "Bind extra hotkeys to specific prompts. Ctrl+Alt+1 → 'Explain this code'. Ctrl+Alt+2 → 'What's wrong here?'. One keystroke, full hands-free.",
