@@ -334,7 +334,7 @@ export default function MakoBytesHub() {
       {/* ───── APPS GRID ───── */}
       <section
         id="apps"
-        className="relative border-y border-white/5 bg-ink-900/40 py-24 sm:py-32"
+        className="relative scroll-mt-20 border-y border-white/5 bg-ink-900/40 py-24 sm:py-32"
       >
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-16 text-center">
@@ -357,7 +357,10 @@ export default function MakoBytesHub() {
       </section>
 
       {/* ───── PHILOSOPHY ───── */}
-      <section id="philosophy" className="relative py-24 sm:py-32">
+      <section
+        id="philosophy"
+        className="relative scroll-mt-20 py-24 sm:py-32"
+      >
         <div className="mx-auto max-w-4xl px-6">
           <div className="mb-12 text-center">
             <div className="mono-tag mb-4 text-glow-magenta">

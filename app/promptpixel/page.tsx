@@ -234,7 +234,7 @@ export default function PromptPixelPage() {
       </section>
 
       {/* ───── HOW IT WORKS ───── */}
-      <section id="how" className="relative py-32">
+      <section id="how" className="relative scroll-mt-20 py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-20 text-center">
             <div className="mono-tag mb-4 text-glow-cyan">// workflow</div>
@@ -314,7 +314,7 @@ export default function PromptPixelPage() {
       {/* ───── FEATURES ───── */}
       <section
         id="features"
-        className="relative overflow-hidden border-y border-white/5 bg-ink-900/40 py-32"
+        className="relative scroll-mt-20 overflow-hidden border-y border-white/5 bg-ink-900/40 py-32"
       >
         <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-glow-violet/10 blur-[150px]" />
         <div className="relative mx-auto max-w-6xl px-6">
@@ -390,7 +390,7 @@ export default function PromptPixelPage() {
       </section>
 
       {/* ───── PRICING ───── */}
-      <section id="pricing" className="relative py-32">
+      <section id="pricing" className="relative scroll-mt-20 py-32">
         <div className="mx-auto max-w-5xl px-6">
           <div className="mb-16 text-center">
             <div className="mono-tag mb-4 text-glow-cyan">// pricing</div>
@@ -517,7 +517,7 @@ export default function PromptPixelPage() {
       </section>
 
       {/* ───── FAQ ───── */}
-      <section id="faq" className="py-32">
+      <section id="faq" className="scroll-mt-20 py-32">
         <div className="mx-auto max-w-3xl px-6">
           <div className="mb-16 text-center">
             <div className="mono-tag mb-4 text-glow-cyan">// faq</div>
