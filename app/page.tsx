@@ -75,11 +75,11 @@ const apps: MakoApp[] = [
   {
     slug: "promptpixel",
     name: "PromptPixel",
-    tagline: "Screenshot in. Perfect prompt out.",
+    tagline: "One hotkey. Screenshot to AI.",
     description:
-      "Capture any pixel on your screen. Get a paste-ready AI prompt in under a second.",
+      "Press a key. PromptPixel snaps your screen, pastes it into ChatGPT, Claude, or any AI chat — and types your prompt alongside it. Hands-free.",
     status: "available",
-    price: "$25",
+    price: "Free + Pro $25",
     platform: "Windows",
     href: "/promptpixel",
     accent: "blue",

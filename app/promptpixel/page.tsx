@@ -4,56 +4,45 @@ import {
   ArrowRight,
   ArrowLeft,
   Check,
-  Zap,
-  Target,
-  Lock,
+  Camera,
+  Mic,
+  ScanText,
   Keyboard,
-  Clipboard,
-  Brain,
-  Globe,
-  RefreshCw,
-  Feather,
+  Bell,
+  History,
+  Lock,
+  Zap,
   Plus,
-  Play,
+  Eye,
+  Wand2,
+  MousePointerClick,
+  Crown,
 } from "lucide-react";
-import { AppDemoMockup } from "@/components/blocks/app-demo-mockup";
+import { PromptPixelShowcase } from "@/components/blocks/promptpixel-showcase";
 
 export const metadata: Metadata = {
-  title: "PromptPixel — Screenshot to AI Prompt, Instantly | MakoBytes",
+  title:
+    "PromptPixel — One Hotkey. Screenshot to Any AI Chat. | MakoBytes",
   description:
-    "Capture any pixel on your screen. Get a perfectly structured, paste-ready AI prompt in under a second. Windows app by MakoBytes. $25 one-time, no subscription.",
+    "Press a hotkey. Drop a screenshot into ChatGPT, Claude, or any AI chat — with your prompt auto-typed alongside it. Free Windows app. Pro unlocks OCR, voice prompts, and multi-target hotkeys.",
   alternates: { canonical: "https://makobytes.com/promptpixel" },
   openGraph: {
     type: "website",
     url: "https://makobytes.com/promptpixel",
-    title: "PromptPixel — Screenshot to AI Prompt",
+    title: "PromptPixel — Screenshot to AI Chat in One Hotkey",
     description:
-      "Capture. Extract. Prompt. Windows desktop tool that turns screenshots into paste-ready AI prompts. $25 one-time.",
+      "Hotkey-driven screenshot capture that pastes straight into any AI chat with your prompt. Free for Windows. Pro adds OCR, voice, and multi-target hotkeys.",
     siteName: "MakoBytes",
   },
 };
 
-// ───── brand mark (inline svg) ─────
+// ───── brand mark ─────
 function BrandMark({ className = "" }: { className?: string }) {
   return (
     <div
       className={`relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-glow-blue via-glow-cyan to-glow-magenta ${className}`}
     >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        className="h-5 w-5 text-white"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M6 20V4h7a5 5 0 010 10H9"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="17" cy="19" r="1.5" fill="currentColor" />
-      </svg>
+      <Camera className="h-4 w-4 text-white" strokeWidth={2.5} />
     </div>
   );
 }
@@ -61,7 +50,6 @@ function BrandMark({ className = "" }: { className?: string }) {
 export default function PromptPixelPage() {
   return (
     <main className="relative min-h-screen bg-ink-950 text-white">
-      {/* JSON-LD for this product only */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -70,27 +58,33 @@ export default function PromptPixelPage() {
             "@type": "SoftwareApplication",
             name: "PromptPixel",
             description:
-              "Desktop utility that converts screenshots into AI-ready prompts using OCR and prompt engineering.",
+              "Hotkey-driven Windows desktop app that captures a screenshot and pastes it directly into any AI chat with an auto-typed prompt. Free tier available, Pro unlocks OCR, voice prompts, and multi-target hotkeys.",
             url: "https://makobytes.com/promptpixel",
             applicationCategory: "ProductivityApplication",
             operatingSystem: "Windows 10, Windows 11",
+            softwareVersion: "2.0.0-alpha",
             author: {
               "@type": "Organization",
               name: "MakoBytes",
               url: "https://makobytes.com",
             },
-            offers: {
-              "@type": "Offer",
-              price: "25.00",
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
-              priceValidUntil: "2027-12-31",
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: "127",
-            },
+            offers: [
+              {
+                "@type": "Offer",
+                name: "PromptPixel Free",
+                price: "0",
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+              },
+              {
+                "@type": "Offer",
+                name: "PromptPixel Pro",
+                price: "25.00",
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                priceValidUntil: "2027-12-31",
+              },
+            ],
           }),
         }}
       />
@@ -132,10 +126,10 @@ export default function PromptPixelPage() {
             </a>
           </div>
           <a
-            href="#buy"
+            href="#download"
             className="btn-glow rounded-lg px-5 py-2 text-sm font-semibold text-white"
           >
-            Get it — $25
+            Download free
           </a>
         </div>
       </nav>
@@ -147,63 +141,63 @@ export default function PromptPixelPage() {
       >
         <div className="pointer-events-none absolute inset-0 z-0 grid-overlay opacity-40" />
 
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-8 px-6 lg:grid-cols-2 lg:gap-4">
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-8 px-6 py-16 lg:grid-cols-2 lg:gap-8 lg:py-0">
           {/* LEFT — text */}
           <div className="relative z-20 flex flex-col items-start text-left">
             <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
               <span className="mono-tag text-white/80">
-                v1.0 · windows · macos coming soon
+                v2.0.0-alpha · windows · macos coming soon
               </span>
             </div>
 
             <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-              <span className="text-gradient">Screenshot in.</span>
+              <span className="text-gradient">One hotkey.</span>
               <br />
-              <span className="text-gradient-violet">Perfect prompt out.</span>
+              <span className="text-gradient-violet">Screenshot to AI.</span>
             </h1>
 
             <p className="mt-6 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">
-              Capture any pixel on your screen. Get a perfectly structured,
-              paste-ready AI prompt in under a second.
+              Press a key. PromptPixel captures your screen, pastes it
+              straight into ChatGPT, Claude, or any AI chat — and types your
+              prompt alongside it. Hands-free AI workflows.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="#buy"
+                href="#download"
                 className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
               >
-                Download for Windows — $25
+                Download free for Windows
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#how"
                 className="flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-6 py-3.5 font-semibold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
               >
-                <Play className="h-3.5 w-3.5" fill="currentColor" />
-                See it work
+                How it works
               </a>
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/40">
               <span className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
-                one-time
+                free forever
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                pro unlocks at $25 once
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
                 no subscription
               </span>
-              <span className="flex items-center gap-1.5">
-                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
-                lifetime updates
-              </span>
             </div>
           </div>
 
-          {/* RIGHT — animated app demo mockup */}
-          <div className="relative w-full py-8 lg:py-0">
-            <AppDemoMockup />
+          {/* RIGHT — interactive screenshot showcase */}
+          <div className="relative w-full">
+            <PromptPixelShowcase />
           </div>
         </div>
       </section>
@@ -212,7 +206,7 @@ export default function PromptPixelPage() {
       <section className="border-y border-white/5 bg-ink-900/50 py-16">
         <div className="mx-auto max-w-6xl px-6">
           <p className="mono-tag mb-8 text-center text-white/40">
-            works with every llm you already use
+            works with every ai chat you already use
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 text-white/60 md:gap-14">
             {[
@@ -240,11 +234,11 @@ export default function PromptPixelPage() {
           <div className="mb-20 text-center">
             <div className="mono-tag mb-4 text-glow-cyan">// workflow</div>
             <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              Three keystrokes. One great prompt.
+              From screen to AI in one keystroke.
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-white/60">
-              No app switching. No copy-paste gymnastics. PromptPixel lives in
-              your menu bar and activates with a global hotkey.
+              Set it up once. Forget it forever. PromptPixel lives in your
+              system tray and waits for your hotkey.
             </p>
           </div>
 
@@ -252,134 +246,98 @@ export default function PromptPixelPage() {
             {[
               {
                 step: "step_01",
-                title: "Capture",
+                title: "Bind your hotkey",
                 body: (
                   <>
-                    Press{" "}
+                    Open settings, pick a hotkey combo (default{" "}
                     <span className="mono-tag text-glow-cyan">
-                      Ctrl + Shift + P
-                    </span>{" "}
-                    and drag a region. Any window, any app, any pixel.
+                      Ctrl + Alt + S
+                    </span>
+                    ), and write a default prompt PromptPixel will type for you
+                    — like <em>"explain this"</em> or <em>"what's wrong here?"</em>.
                   </>
                 ),
-                color: "violet" as const,
-                Icon: Target,
+                Icon: Keyboard,
               },
               {
                 step: "step_02",
-                title: "Extract",
-                body: "State-of-the-art OCR pulls every character — even from low-res screenshots, screenshots of code, and handwriting.",
-                color: "cyan" as const,
-                Icon: Brain,
+                title: "Click into your AI chat",
+                body: "Open ChatGPT, Claude, Gemini, whatever — and put your cursor in the message input. PromptPixel pastes wherever your cursor is, so it works in every web AI and most desktop ones too.",
+                Icon: MousePointerClick,
               },
               {
                 step: "step_03",
-                title: "Prompt",
-                body: "PromptPixel structures the text into a clean, contextual prompt. Copied to your clipboard. Ready to paste.",
-                color: "magenta" as const,
+                title: "Press the hotkey",
+                body: "PromptPixel snaps the screen, pastes the image into the chat input, and auto-types your prompt right after it. The AI sees image + prompt instantly. You didn't touch the mouse once.",
                 Icon: Zap,
               },
-            ].map(({ step, title, body, color, Icon }) => {
-              const colorMap = {
-                violet:
-                  "text-glow-violet border-glow-violet/30 from-glow-violet/30",
-                cyan: "text-glow-cyan border-glow-cyan/30 from-glow-cyan/30",
-                magenta:
-                  "text-glow-magenta border-glow-magenta/30 from-glow-magenta/30",
-              };
-              return (
-                <div key={step} className="group glass rounded-2xl p-8">
-                  <div
-                    className={`mono-tag mb-6 ${colorMap[color].split(" ")[0]}`}
-                  >
-                    {step}
-                  </div>
-                  <div
-                    className={`mb-6 flex h-14 w-14 items-center justify-center rounded-xl border bg-gradient-to-br to-transparent ${colorMap[color]}`}
-                  >
-                    <Icon
-                      className={`h-7 w-7 ${colorMap[color].split(" ")[0]}`}
-                    />
-                  </div>
-                  <h3 className="mb-3 text-2xl font-bold text-white">
-                    {title}
-                  </h3>
-                  <p className="leading-relaxed text-white/60">{body}</p>
+            ].map(({ step, title, body, Icon }) => (
+              <div key={step} className="group glass rounded-2xl p-8">
+                <div className="mono-tag mb-6 text-glow-blue">{step}</div>
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-glow-blue/30 bg-gradient-to-br from-glow-blue/30 to-transparent">
+                  <Icon className="h-7 w-7 text-glow-blue" />
                 </div>
-              );
-            })}
+                <h3 className="mb-3 text-2xl font-bold text-white">{title}</h3>
+                <p className="leading-relaxed text-white/60">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ───── FEATURES ───── */}
+      {/* ───── FREE FEATURES ───── */}
       <section
         id="features"
         className="relative scroll-mt-20 overflow-hidden border-y border-white/5 bg-ink-900/40 py-32"
       >
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-glow-violet/10 blur-[150px]" />
+        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-glow-blue/10 blur-[150px]" />
         <div className="relative mx-auto max-w-6xl px-6">
-          <div className="mb-20 text-center">
-            <div className="mono-tag mb-4 text-glow-magenta">// features</div>
+          <div className="mb-16 text-center">
+            <div className="mono-tag mb-4 text-glow-cyan">// free tier</div>
             <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              Built for people who live in AI.
+              Free, forever, no catch.
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-white/60">
-              Every feature exists because we got tired of doing it the slow
-              way.
+              Everything you need to wire AI chats into your day-to-day
+              keyboard flow. The whole core product, free.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                Icon: Zap,
-                title: "Sub-second OCR",
-                body: "Runs locally. No server round trips. No waiting.",
+                Icon: Keyboard,
+                title: "Custom hotkeys",
+                body: "Bind any combo for fullscreen capture and a separate one for region capture. Reserved keys (Ctrl+V, etc.) are blocked so you can't break Windows.",
               },
               {
-                Icon: Target,
-                title: "Smart prompt templates",
-                body: "Choose explain, refactor, summarize, translate — or write your own.",
+                Icon: Camera,
+                title: "Two capture modes",
+                body: "Full screen with one keypress, or a dim-the-screen drag-rectangle for just the part you want.",
+              },
+              {
+                Icon: Wand2,
+                title: "Auto-type a default prompt",
+                body: "Set a prompt like 'explain this' once. Every capture pastes the image AND types your prompt right after — perfect for AI chats.",
+              },
+              {
+                Icon: Bell,
+                title: "Capture feedback",
+                body: "Soft confirmation sound, thumbnail toast preview, and an optional 'confirm before sending' dialog if you want a final check.",
+              },
+              {
+                Icon: History,
+                title: "Recent captures",
+                body: "Your last 3 captures stay in the tray menu so you can re-paste them later. Pro raises the cap to 50.",
               },
               {
                 Icon: Lock,
-                title: "Private by default",
-                body: "Everything runs on-device. Your screenshots never leave your machine.",
-              },
-              {
-                Icon: Keyboard,
-                title: "Global hotkeys",
-                body: "Remap anything. Trigger capture without touching the mouse.",
-              },
-              {
-                Icon: Clipboard,
-                title: "Clipboard history",
-                body: "Last 50 prompts stored locally. Search, reuse, export.",
-              },
-              {
-                Icon: Brain,
-                title: "Context-aware",
-                body: "Detects code, tables, UI, charts — structures the prompt accordingly.",
-              },
-              {
-                Icon: Globe,
-                title: "Model-agnostic",
-                body: "Works with every LLM. We don't lock you in.",
-              },
-              {
-                Icon: RefreshCw,
-                title: "Lifetime updates",
-                body: "One payment. Every future version. Forever.",
-              },
-              {
-                Icon: Feather,
-                title: "Lightweight",
-                body: "Under 40MB. Zero background drain. Menu-bar only.",
+                title: "Stays on your machine",
+                body: "PromptPixel runs entirely on Windows-native APIs. No third-party services. No cloud calls. Your screen never leaves your PC.",
               },
             ].map(({ Icon, title, body }) => (
               <div key={title} className="glass rounded-2xl p-7">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-glow-violet/20 to-glow-cyan/20">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-glow-blue/20 to-glow-cyan/20">
                   <Icon className="h-5 w-5 text-glow-cyan" />
                 </div>
                 <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
@@ -390,57 +348,110 @@ export default function PromptPixelPage() {
         </div>
       </section>
 
-      {/* ───── PRICING ───── */}
-      <section id="pricing" className="relative scroll-mt-20 py-32">
-        <div className="mx-auto max-w-5xl px-6">
+      {/* ───── PRO FEATURES ───── */}
+      <section className="relative py-32">
+        <div className="mx-auto max-w-6xl px-6">
           <div className="mb-16 text-center">
-            <div className="mono-tag mb-4 text-glow-cyan">// pricing</div>
+            <div className="mono-tag mb-4 inline-flex items-center gap-1.5 text-glow-magenta">
+              <Crown className="h-3.5 w-3.5" />
+              // pro tier
+            </div>
             <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              One price. Own it forever.
+              Three power features. One Pro key.
             </h2>
-            <p className="text-lg text-white/60">
-              We hate subscriptions. You probably do too.
+            <p className="mx-auto max-w-2xl text-lg text-white/60">
+              The features that turn PromptPixel from a hotkey into a full
+              hands-free AI cockpit.
             </p>
           </div>
 
-          <div className="relative mx-auto max-w-xl">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-glow-violet via-glow-magenta to-glow-cyan opacity-40 blur-2xl" />
-            <div className="relative glass rounded-3xl p-10 md:p-12">
-              <div className="mb-8 flex items-start justify-between">
-                <div>
-                  <div className="mono-tag mb-2 text-glow-violet">
-                    // promptpixel_pro
-                  </div>
-                  <h3 className="text-3xl font-black text-white">
-                    Everything. Forever.
-                  </h3>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                Icon: ScanText,
+                title: "OCR text extraction",
+                hotkey: "Ctrl + Alt + T",
+                body: "Drag a box around any text on screen. PromptPixel runs Windows OCR on just that region and drops the extracted TEXT on your clipboard — no image, no vision tokens. Great for code blocks, error messages, PDFs, and document text.",
+              },
+              {
+                Icon: Mic,
+                title: "Voice prompt",
+                hotkey: "Ctrl + Alt + V",
+                body: "Press the hotkey and speak your prompt. PromptPixel listens with Windows speech recognition, captures the screen when you stop talking, pastes the image, and types your spoken prompt. Hands-free AI, fully local.",
+              },
+              {
+                Icon: Zap,
+                title: "Multi-target hotkeys",
+                hotkey: "Ctrl + Alt + 1/2/3…",
+                body: "Bind extra hotkeys to specific pre-set prompts. Ctrl+Alt+1 → 'Explain this code'. Ctrl+Alt+2 → 'What's wrong here?'. Ctrl+Alt+3 → 'Translate to English'. One keystroke, one workflow.",
+              },
+            ].map(({ Icon, title, hotkey, body }) => (
+              <div
+                key={title}
+                className="group relative glass rounded-2xl p-8"
+              >
+                <div className="mono-tag absolute right-6 top-6 inline-flex items-center gap-1 rounded-full border border-glow-magenta/30 bg-glow-magenta/10 px-2.5 py-0.5 text-[10px] text-glow-magenta">
+                  <Crown className="h-2.5 w-2.5" />
+                  pro
                 </div>
-                <div className="mono-tag rounded-full border border-green-400/20 bg-green-400/10 px-3 py-1 text-green-400">
-                  best value
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-glow-magenta/30 bg-gradient-to-br from-glow-magenta/30 to-transparent">
+                  <Icon className="h-7 w-7 text-glow-magenta" />
                 </div>
+                <h3 className="mb-2 text-2xl font-bold text-white">{title}</h3>
+                <div className="mono-tag mb-4 text-glow-cyan">{hotkey}</div>
+                <p className="leading-relaxed text-white/60">{body}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="mb-8 flex items-baseline gap-2">
-                <span className="text-6xl font-black text-white">$25</span>
-                <span className="text-white/50 line-through">$49</span>
-                <span className="ml-2 text-white/60">one-time</span>
+      {/* ───── PRICING ───── */}
+      <section
+        id="pricing"
+        className="relative scroll-mt-20 border-y border-white/5 bg-ink-900/40 py-32"
+      >
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-16 text-center">
+            <div className="mono-tag mb-4 text-glow-cyan">// pricing</div>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
+              Free or Pro. You pick.
+            </h2>
+            <p className="text-lg text-white/60">
+              No subscriptions, ever. Pay once for Pro and own it forever.
+            </p>
+          </div>
+
+          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+            {/* FREE */}
+            <div className="glass rounded-2xl p-8 sm:p-10">
+              <div className="mono-tag mb-2 text-glow-cyan">
+                // promptpixel_free
               </div>
+              <h3 className="text-2xl font-black text-white">Free</h3>
+              <div className="mt-4 flex items-baseline gap-2">
+                <span className="text-5xl font-black text-white">$0</span>
+                <span className="text-white/50">forever</span>
+              </div>
+              <p className="mt-4 text-sm text-white/60">
+                The whole core product. No trial, no nag screen, no expiry.
+              </p>
 
-              <ul className="mb-10 space-y-4">
+              <ul className="mt-8 space-y-3 text-sm">
                 {[
-                  "Unlimited captures + prompts",
-                  "All prompt templates",
-                  "Lifetime updates",
-                  "Windows 10/11 (macOS coming soon)",
-                  "Priority email support",
-                  "30-day money-back guarantee",
+                  "Fullscreen + region capture hotkeys",
+                  "Custom auto-type prompt after paste",
+                  "Capture feedback (sound, toast, confirm)",
+                  "Recent captures (3)",
+                  "Tray-resident, lightweight",
+                  "Windows 10/11 native",
                 ].map((item) => (
                   <li
                     key={item}
                     className="flex items-center gap-3 text-white/80"
                   >
                     <Check
-                      className="h-5 w-5 flex-shrink-0 text-glow-cyan"
+                      className="h-4 w-4 flex-shrink-0 text-glow-cyan"
                       strokeWidth={3}
                     />
                     {item}
@@ -449,76 +460,111 @@ export default function PromptPixelPage() {
               </ul>
 
               <a
-                id="buy"
-                href="#buy"
-                className="btn-glow flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold text-white"
+                id="download"
+                href="#download"
+                className="mt-10 flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-4 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
               >
-                Buy PromptPixel — $25
-                <ArrowRight className="h-5 w-5" />
+                Download free for Windows
+                <ArrowRight className="h-4 w-4" />
               </a>
-              <p className="mono-tag mt-4 text-center text-white/40">
-                secure checkout · instant download
-              </p>
+            </div>
+
+            {/* PRO */}
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-glow-blue via-glow-cyan to-glow-magenta opacity-30 blur-2xl" />
+              <div className="relative glass rounded-2xl p-8 sm:p-10">
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="mono-tag inline-flex items-center gap-1 text-glow-magenta">
+                    <Crown className="h-3 w-3" />
+                    // promptpixel_pro
+                  </div>
+                  <div className="mono-tag rounded-full border border-green-400/20 bg-green-400/10 px-3 py-0.5 text-green-400">
+                    best value
+                  </div>
+                </div>
+                <h3 className="text-2xl font-black text-white">Pro</h3>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="text-5xl font-black text-white">$25</span>
+                  <span className="text-white/50 line-through">$49</span>
+                  <span className="ml-1 text-white/60">one-time</span>
+                </div>
+                <p className="mt-4 text-sm text-white/60">
+                  Everything in Free, plus the three power tools.
+                </p>
+
+                <ul className="mt-8 space-y-3 text-sm">
+                  {[
+                    "Everything in Free",
+                    "OCR text extraction (Ctrl+Alt+T)",
+                    "Voice prompt (Ctrl+Alt+V)",
+                    "Multi-target hotkeys",
+                    "Recent captures raised to 50",
+                    "Lifetime updates",
+                    "Priority email support",
+                    "30-day money-back guarantee",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 text-white/80"
+                    >
+                      <Check
+                        className="h-4 w-4 flex-shrink-0 text-glow-magenta"
+                        strokeWidth={3}
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#buy"
+                  className="btn-glow mt-10 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold text-white"
+                >
+                  Unlock Pro — $25
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+                <p className="mono-tag mt-3 text-center text-white/40">
+                  one-time payment · instant license
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ───── TESTIMONIALS ───── */}
-      <section className="border-y border-white/5 bg-ink-900/40 py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-16 text-center">
-            <div className="mono-tag mb-4 text-glow-magenta">// reviews</div>
-            <h2 className="text-4xl font-black tracking-tight text-gradient sm:text-5xl">
-              What people say
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                quote:
-                  "This replaced about four different tools in my workflow. I can't believe it's $25.",
-                name: "Maya Chen",
-                role: "product designer",
-                gradient: "from-glow-violet to-glow-magenta",
-              },
-              {
-                quote:
-                  "I use it 30+ times a day for pulling code from Stack Overflow screenshots. Instant prompt, instant answer.",
-                name: "Devin Ortiz",
-                role: "full-stack dev",
-                gradient: "from-glow-cyan to-glow-violet",
-              },
-              {
-                quote:
-                  "The 'refine' button is genius. It fixes prompts I didn't even know were bad.",
-                name: "Sam Patel",
-                role: "marketing lead",
-                gradient: "from-glow-magenta to-glow-cyan",
-              },
-            ].map(({ quote, name, role, gradient }) => (
-              <div key={name} className="glass rounded-2xl p-7">
-                <div className="mb-3 text-yellow-400">★★★★★</div>
-                <p className="mb-6 leading-relaxed text-white/80">"{quote}"</p>
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`h-10 w-10 rounded-full bg-gradient-to-br ${gradient}`}
-                  />
-                  <div>
-                    <div className="text-sm font-semibold text-white">
-                      {name}
-                    </div>
-                    <div className="mono-tag text-white/40">{role}</div>
-                  </div>
-                </div>
+      {/* ───── PRIVACY CALLOUT ───── */}
+      <section className="relative py-24">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="glass rounded-2xl p-8 sm:p-12">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-glow-blue/30 bg-gradient-to-br from-glow-blue/30 to-transparent">
+                <Lock className="h-8 w-8 text-glow-blue" />
               </div>
-            ))}
+              <div>
+                <div className="mono-tag mb-2 text-glow-blue">
+                  // privacy by default
+                </div>
+                <h3 className="mb-3 text-2xl font-bold text-white sm:text-3xl">
+                  Your screen never leaves your machine.
+                </h3>
+                <p className="leading-relaxed text-white/60">
+                  PromptPixel uses Windows-native APIs for everything — capture,
+                  OCR, and speech recognition. No third-party services. No cloud
+                  uploads. No telemetry. No account required. The only thing
+                  that ever touches the network is the AI chat <em>you</em>{" "}
+                  paste into.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ───── FAQ ───── */}
-      <section id="faq" className="scroll-mt-20 py-32">
+      <section
+        id="faq"
+        className="scroll-mt-20 border-y border-white/5 bg-ink-900/40 py-32"
+      >
         <div className="mx-auto max-w-3xl px-6">
           <div className="mb-16 text-center">
             <div className="mono-tag mb-4 text-glow-cyan">// faq</div>
@@ -529,24 +575,32 @@ export default function PromptPixelPage() {
           <div className="space-y-4">
             {[
               {
-                q: "Does PromptPixel send my screenshots to the cloud?",
-                a: "No. OCR and prompt structuring run entirely on your device. Your screens never leave your machine.",
+                q: "What's the difference between Free and Pro?",
+                a: "Free gives you the full core workflow — hotkey-driven screenshot capture, auto-type prompt after paste, region selection, capture history of 3, and all feedback options. Pro ($25 one-time) unlocks OCR text extraction, voice prompts, multi-target hotkeys, and raises the capture history to 50. Free works forever with no nags.",
+              },
+              {
+                q: "Does it actually work with ChatGPT, Claude, etc?",
+                a: "Yes. PromptPixel pastes wherever your cursor is, so it works in any AI chat that accepts an image upload — ChatGPT, Claude, Gemini, Perplexity, Copilot, Mistral, your local LLM web UI, anything. Click into the chat input, press the hotkey, the screenshot pastes and your prompt types right after.",
+              },
+              {
+                q: "Does PromptPixel send my screenshots anywhere?",
+                a: "Never. PromptPixel uses Windows-native APIs for capture, OCR, and voice. Nothing touches the network. No telemetry, no analytics, no account required. The only network call ever made is by the AI chat you paste into — and that's your call, not ours.",
+              },
+              {
+                q: "What's the default hotkey?",
+                a: "Ctrl + Alt + S for fullscreen capture and Ctrl + Shift + Alt + S for region capture. Both are fully customizable in settings. Pro adds Ctrl + Alt + T for OCR, Ctrl + Alt + V for voice prompt, and you can bind your own multi-target hotkeys.",
               },
               {
                 q: "Which operating systems are supported?",
-                a: "PromptPixel currently supports Windows 10 and 11. macOS support is in active development and coming soon — if you buy now on Windows, you'll get the Mac version free the moment it ships.",
-              },
-              {
-                q: "Is $25 really one-time?",
-                a: "Yes. No subscriptions, no renewals, no upsells. One payment gets you the current version plus every future update.",
-              },
-              {
-                q: "What if I don't like it?",
-                a: "30-day money-back guarantee. Email us, we refund you. No questions, no forms.",
+                a: "Windows 10 and Windows 11 right now. macOS support is in active development — if you buy Pro on Windows, you'll get the Mac version free the moment it ships.",
               },
               {
                 q: "Does it work offline?",
-                a: "Yes. Capture, OCR, and prompt generation all work without an internet connection.",
+                a: "The capture, OCR, and voice features work fully offline since they use built-in Windows APIs. Only the AI chat itself needs internet — and that's the AI provider's problem, not ours.",
+              },
+              {
+                q: "What if Pro doesn't work for me?",
+                a: "30-day money-back guarantee, no forms, no questions. Email hello@makobytes.com and we refund you. Free stays free either way.",
               },
             ].map(({ q, a }) => (
               <details
@@ -555,7 +609,7 @@ export default function PromptPixelPage() {
               >
                 <summary className="flex list-none items-center justify-between font-semibold text-white">
                   {q}
-                  <Plus className="h-5 w-5 text-glow-violet transition-transform group-open:rotate-45" />
+                  <Plus className="h-5 w-5 flex-shrink-0 text-glow-blue transition-transform group-open:rotate-45" />
                 </summary>
                 <p className="mt-4 leading-relaxed text-white/60">{a}</p>
               </details>
@@ -566,21 +620,29 @@ export default function PromptPixelPage() {
 
       {/* ───── FINAL CTA ───── */}
       <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-glow-violet/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-glow-blue/10 to-transparent" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <h2 className="mb-6 text-5xl font-black tracking-tight text-gradient sm:text-7xl">
-            Stop typing prompts.
+            Stop tabbing. Start shipping.
           </h2>
           <p className="mb-10 text-xl text-white/60">
-            PromptPixel is $25. It pays for itself the first week you use it.
+            Free for Windows. Pro is $25 once, never again.
           </p>
-          <a
-            href="#buy"
-            className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold text-white"
-          >
-            Get PromptPixel
-            <ArrowRight className="h-5 w-5" />
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="#download"
+              className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold text-white"
+            >
+              Download free
+              <ArrowRight className="h-5 w-5" />
+            </a>
+            <a
+              href="#pricing"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-10 py-5 text-lg font-bold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
+            >
+              See Pro
+            </a>
+          </div>
         </div>
       </section>
 
@@ -616,7 +678,7 @@ export default function PromptPixelPage() {
             </div>
           </div>
           <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-white/30 md:flex-row">
-            <div>© 2026 makobytes · built by makologics</div>
+            <div>© 2026 makobytes · v2.0.0-alpha · built by makologics</div>
             <div className="flex gap-4">
               <a href="#" className="transition hover:text-white">
                 privacy
