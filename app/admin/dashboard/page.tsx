@@ -6,11 +6,10 @@ import {
   Download,
   ShoppingCart,
   MousePointerClick,
-  LogOut,
   ArrowLeft,
   RefreshCw,
 } from "lucide-react";
-import { isAuthed } from "@/lib/admin/auth";
+import { auth } from "@/auth";
 import {
   getTotal,
   getToday,
@@ -32,7 +31,8 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function AdminDashboard() {
-  if (!(await isAuthed())) {
+  const session = await auth();
+  if (!session?.user?.email) {
     redirect("/admin");
   }
 
@@ -64,7 +64,6 @@ export default async function AdminDashboard() {
     getRecentEvents(50),
   ]);
 
-  // Funnel: pageviews → product views → download clicks → buy clicks
   const productViews = await getTotal("pageview_promptpixel");
   const funnelStops = [
     { label: "Site visits", value: totalPageviews },
@@ -79,7 +78,6 @@ export default async function AdminDashboard() {
       <div className="pointer-events-none fixed inset-0 grid-overlay opacity-20" />
       <div className="pointer-events-none fixed left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-glow-blue/8 blur-[160px]" />
 
-      {/* NAV */}
       <nav className="relative border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-4">
@@ -99,6 +97,18 @@ export default async function AdminDashboard() {
             </span>
           </div>
           <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-2 sm:flex">
+              {session.user.image && (
+                <img
+                  src={session.user.image}
+                  alt=""
+                  className="h-7 w-7 rounded-full border border-white/10"
+                />
+              )}
+              <span className="mono-tag text-[11px] text-white/60">
+                {session.user.email}
+              </span>
+            </div>
             <a
               href="/admin/dashboard"
               className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/60 transition hover:border-white/30 hover:text-white"
@@ -133,7 +143,6 @@ export default async function AdminDashboard() {
           </div>
         )}
 
-        {/* Heading */}
         <div className="mb-8">
           <div className="mono-tag mb-2 text-glow-cyan">// overview</div>
           <h1 className="text-4xl font-black tracking-tight text-gradient sm:text-5xl">
@@ -145,7 +154,6 @@ export default async function AdminDashboard() {
           </p>
         </div>
 
-        {/* Stat cards */}
         <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             label="Page views"
@@ -177,7 +185,6 @@ export default async function AdminDashboard() {
           />
         </div>
 
-        {/* Funnel */}
         <div className="mb-8 glass rounded-2xl p-6">
           <div className="mb-6">
             <div className="mono-tag mb-1 text-glow-magenta">// funnel</div>
@@ -217,7 +224,6 @@ export default async function AdminDashboard() {
           </div>
         </div>
 
-        {/* Trend chart + events */}
         <div className="grid gap-6 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <TrendChart
