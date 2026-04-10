@@ -478,12 +478,12 @@ export default function MakoBytesHub() {
           <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-white/30 md:flex-row">
             <div>© 2026 makobytes · built by makologics</div>
             <div className="flex gap-4">
-              <a href="#" className="transition hover:text-white">
+              <Link href="/privacy" className="transition hover:text-white">
                 privacy
-              </a>
-              <a href="#" className="transition hover:text-white">
+              </Link>
+              <Link href="/terms" className="transition hover:text-white">
                 terms
-              </a>
+              </Link>
             </div>
           </div>
         </div>

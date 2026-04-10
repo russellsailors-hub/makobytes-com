@@ -333,7 +333,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
             )}
 
             {/* Hover-only top-right control buttons */}
-            <div className="absolute right-4 top-4 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+            <div className="absolute right-4 top-4 flex gap-2 sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
               <button
                 type="button"
                 onClick={(e) => {
@@ -341,7 +341,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                   restart();
                 }}
                 aria-label="Restart demo"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-ink-950/80 text-white/70 backdrop-blur-md transition hover:border-glow-blue/50 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-ink-950/80 text-white/70 backdrop-blur-md transition hover:border-glow-blue/50 hover:text-white"
               >
                 <RotateCcw className="h-4 w-4" />
               </button>
@@ -352,7 +352,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                   togglePlay();
                 }}
                 aria-label={playing ? "Pause" : "Play"}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-ink-950/80 text-white/70 backdrop-blur-md transition hover:border-glow-blue/50 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-ink-950/80 text-white/70 backdrop-blur-md transition hover:border-glow-blue/50 hover:text-white"
               >
                 {playing ? (
                   <Pause className="h-4 w-4" fill="currentColor" />
@@ -375,7 +375,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                     type="button"
                     onClick={() => goTo(i)}
                     aria-label={`Go to frame ${i + 1}`}
-                    className="group/dot relative h-1 flex-1 overflow-hidden rounded-full bg-white/10 transition hover:bg-white/20"
+                    className="group/dot relative h-2 sm:h-1 flex-1 overflow-hidden rounded-full bg-white/10 transition hover:bg-white/20"
                   >
                     <div
                       className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-glow-blue to-glow-cyan"

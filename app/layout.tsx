@@ -41,11 +41,24 @@ export const metadata: Metadata = {
     description:
       "Fast. Private. One-time purchase. The MakoBytes app catalog.",
     siteName: "MakoBytes",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MakoBytes — Lightweight Desktop Tools for AI Power Users",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "MakoBytes — Lightweight Desktop Tools",
     description: "Fast. Private. One-time purchase. No subscriptions.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
