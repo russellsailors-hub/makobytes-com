@@ -100,14 +100,12 @@ export default function PromptPixelPage() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link href="/" className="group flex items-center gap-2.5">
             <BrandMark />
-            <div className="flex flex-col leading-none">
-              <span className="font-bold tracking-tight text-white">
-                PromptPixel
+            <span className="text-lg font-bold tracking-tight text-white">
+              PromptPixel
+              <span className="ml-2 text-xs font-normal text-white/40">
+                by MakoBytes
               </span>
-              <span className="mono-tag text-[10px] text-white/40">
-                by makobytes
-              </span>
-            </div>
+            </span>
           </Link>
           <div className="hidden items-center gap-8 text-sm text-white/70 md:flex">
             <Link
