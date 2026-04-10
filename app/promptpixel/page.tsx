@@ -17,6 +17,8 @@ import {
   Wand2,
   MousePointerClick,
   Crown,
+  LayoutList,
+  Save,
 } from "lucide-react";
 import { PromptPixelDemo } from "@/components/blocks/promptpixel-demo";
 
@@ -357,7 +359,7 @@ export default function PromptPixelPage() {
               // pro tier
             </div>
             <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              Three power features. One Pro key.
+              Five power features. One Pro key.
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-white/60">
               The features that turn PromptPixel from a hotkey into a full
@@ -365,8 +367,20 @@ export default function PromptPixelPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
+              {
+                Icon: LayoutList,
+                title: "Prompt Picker",
+                hotkey: "your hotkey",
+                body: "Save a library of prompts and pull up a fast picker right when you capture. Pick the prompt for the moment — explain, refactor, summarize, translate, your custom ones — and PromptPixel pastes the screenshot AND types that prompt for you.",
+              },
+              {
+                Icon: Save,
+                title: "Auto-Save Backups",
+                hotkey: "always on",
+                body: "Every capture you make — image, prompt, and timestamp — automatically saved to a folder you control. Never lose a brilliant prompt because you forgot to save it. Browse, recover, or re-paste any past capture.",
+              },
               {
                 Icon: ScanText,
                 title: "OCR text extraction",
@@ -375,13 +389,13 @@ export default function PromptPixelPage() {
               },
               {
                 Icon: Mic,
-                title: "Voice prompt",
+                title: "Voice to Prompt",
                 hotkey: "Ctrl + Alt + V",
                 body: "Press the hotkey and speak your prompt. PromptPixel listens with Windows speech recognition, captures the screen when you stop talking, pastes the image, and types your spoken prompt. Hands-free AI, fully local.",
               },
               {
                 Icon: Zap,
-                title: "Multi-target hotkeys",
+                title: "Multi-Target Hotkeys",
                 hotkey: "Ctrl + Alt + 1/2/3…",
                 body: "Bind extra hotkeys to specific pre-set prompts. Ctrl+Alt+1 → 'Explain this code'. Ctrl+Alt+2 → 'What's wrong here?'. Ctrl+Alt+3 → 'Translate to English'. One keystroke, one workflow.",
               },
@@ -495,9 +509,11 @@ export default function PromptPixelPage() {
                 <ul className="mt-8 space-y-3 text-sm">
                   {[
                     "Everything in Free",
+                    "Prompt Picker (full prompt library)",
+                    "Auto-Save Backups",
                     "OCR text extraction (Ctrl+Alt+T)",
-                    "Voice prompt (Ctrl+Alt+V)",
-                    "Multi-target hotkeys",
+                    "Voice to Prompt (Ctrl+Alt+V)",
+                    "Multi-Target Hotkeys",
                     "Recent captures raised to 50",
                     "Lifetime updates",
                     "Priority email support",
@@ -576,7 +592,7 @@ export default function PromptPixelPage() {
             {[
               {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you the full core workflow — hotkey-driven screenshot capture, auto-type prompt after paste, region selection, capture history of 3, and all feedback options. Pro ($25 one-time) unlocks OCR text extraction, voice prompts, multi-target hotkeys, and raises the capture history to 50. Free works forever with no nags.",
+                a: "Free gives you the full core workflow — hotkey-driven screenshot capture, one auto-type default prompt, region selection, capture history of 3, and all feedback options. Pro ($25 one-time) unlocks five power features: Prompt Picker (a full library of saved prompts you can pick at capture time), Auto-Save Backups (every capture saved to a folder you control), OCR text extraction, Voice to Prompt, and Multi-Target Hotkeys. Pro also raises the recent-captures cap from 3 to 50. Free works forever with no nags.",
               },
               {
                 q: "Does it actually work with ChatGPT, Claude, etc?",
