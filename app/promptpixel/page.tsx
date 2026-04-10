@@ -18,7 +18,7 @@ import {
   MousePointerClick,
   Crown,
 } from "lucide-react";
-import { PromptPixelShowcase } from "@/components/blocks/promptpixel-showcase";
+import { PromptPixelDemo } from "@/components/blocks/promptpixel-demo";
 
 export const metadata: Metadata = {
   title:
@@ -195,9 +195,9 @@ export default function PromptPixelPage() {
             </div>
           </div>
 
-          {/* RIGHT — interactive screenshot showcase */}
+          {/* RIGHT — auto-playing video-style demo of the real app */}
           <div className="relative w-full">
-            <PromptPixelShowcase />
+            <PromptPixelDemo />
           </div>
         </div>
       </section>
