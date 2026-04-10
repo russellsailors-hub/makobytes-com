@@ -13,7 +13,7 @@ import {
   Plus,
   Play,
 } from "lucide-react";
-import { Whobee } from "@/components/blocks/whobee";
+import { AppDemoMockup } from "@/components/blocks/app-demo-mockup";
 
 // ───── brand mark (inline svg) ─────
 function BrandMark({ className = "" }: { className?: string }) {
@@ -105,8 +105,8 @@ export default function Page() {
             </h1>
 
             <p className="mt-6 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">
-              Capture any pixel. Get a paste-ready AI prompt in under a second.
-              Meet Whobee →
+              Capture any pixel on your screen. Get a perfectly structured,
+              paste-ready AI prompt in under a second.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -142,11 +142,9 @@ export default function Page() {
             </div>
           </div>
 
-          {/* RIGHT — custom Whobee 3D robot (GLB loaded via R3F) */}
-          <div className="relative h-[420px] w-full sm:h-[520px] lg:h-[640px]">
-            <Whobee className="absolute inset-0" />
-            {/* soft vignette so robot edges blend into page bg */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,#05050a_95%)]" />
+          {/* RIGHT — animated app demo mockup (pure CSS, no 3D) */}
+          <div className="relative w-full py-8 lg:py-0">
+            <AppDemoMockup />
           </div>
         </div>
       </section>
