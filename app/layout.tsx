@@ -73,7 +73,7 @@ export default function RootLayout({
                 "Desktop utility that converts screenshots into AI-ready prompts using OCR and prompt engineering.",
               url: "https://makobytes.com",
               applicationCategory: "ProductivityApplication",
-              operatingSystem: "Windows, macOS",
+              operatingSystem: "Windows 10, Windows 11",
               author: {
                 "@type": "Organization",
                 name: "MakoBytes",

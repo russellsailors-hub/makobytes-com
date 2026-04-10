@@ -94,7 +94,7 @@ export default function Page() {
             <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
               <span className="mono-tag text-white/80">
-                v1.0 · shipping now
+                v1.0 · windows · macos coming soon
               </span>
             </div>
 
@@ -114,7 +114,7 @@ export default function Page() {
                 href="#buy"
                 className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
               >
-                Get it — $25
+                Download for Windows — $25
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
@@ -364,7 +364,7 @@ export default function Page() {
                   "Unlimited captures + prompts",
                   "All prompt templates",
                   "Lifetime updates",
-                  "Windows + macOS licenses",
+                  "Windows 10/11 (macOS coming soon)",
                   "Priority email support",
                   "30-day money-back guarantee",
                 ].map((item) => (
@@ -467,7 +467,7 @@ export default function Page() {
               },
               {
                 q: "Which operating systems are supported?",
-                a: "Windows 10/11 and macOS 12+ (Intel and Apple Silicon). Linux is on the roadmap.",
+                a: "PromptPixel currently supports Windows 10 and 11. macOS support is in active development and coming soon — if you buy now on Windows, you'll get the Mac version free the moment it ships.",
               },
               {
                 q: "Is $25 really one-time?",
