@@ -623,6 +623,14 @@ export default function PromptPixelPage() {
                 q: "What if Pro doesn't work for me?",
                 a: "30-day money-back guarantee, no forms, no questions. Email hello@makobytes.com and we refund you. Free stays free either way.",
               },
+              {
+                q: "How do updates work?",
+                a: "Your $25 Pro purchase includes Year 1 of updates. After Year 1 you have a choice: keep using your current version forever (no nag, no expiry, no missing features — everything you paid for keeps working), OR optionally renew updates for $15/year to keep getting new features and bug fixes. The renewal is always optional, never forced.",
+              },
+              {
+                q: "What happens if I don't renew updates?",
+                a: "Nothing breaks. Your current version of PromptPixel keeps working forever — every Pro feature you paid for, every hotkey, every saved prompt. You just stop receiving new features and bug fixes after Year 1. You can renew later if you want to catch up, or stay on your current version indefinitely.",
+              },
             ].map(({ q, a }) => (
               <details
                 key={q}
