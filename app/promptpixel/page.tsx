@@ -372,14 +372,14 @@ export default function PromptPixelPage() {
               {
                 Icon: LayoutList,
                 title: "Prompt Picker",
-                hotkey: "your hotkey",
-                body: "Save a library of prompts and pull up a fast picker right when you capture. Pick the prompt for the moment — explain, refactor, summarize, translate, your custom ones — and PromptPixel pastes the screenshot AND types that prompt for you.",
+                hotkey: "Ctrl + Alt + P",
+                body: "Press the picker hotkey and a popup of your saved prompts appears. Pick one, and PromptPixel captures the screen, pastes it, and types your selected prompt — all in one action. Add as many prompts as you want, one per line. Ships with starter prompts like 'Explain this code', 'What's wrong here?', 'Translate to Spanish', and a dozen more.",
               },
               {
                 Icon: Save,
                 title: "Auto-Save Backups",
                 hotkey: "always on",
-                body: "Every capture you make — image, prompt, and timestamp — automatically saved to a folder you control. Never lose a brilliant prompt because you forgot to save it. Browse, recover, or re-paste any past capture.",
+                body: "Every screenshot is saved as a timestamped PNG to a folder of your choice. Default goes to Pictures\\PromptPixel, or set your own backup folder. Useful when you want a permanent copy of everything you captured — recover, browse, or share later.",
               },
               {
                 Icon: ScanText,
@@ -592,7 +592,7 @@ export default function PromptPixelPage() {
             {[
               {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you the full core workflow — hotkey-driven screenshot capture, one auto-type default prompt, region selection, capture history of 3, and all feedback options. Pro ($25 one-time) unlocks five power features: Prompt Picker (a full library of saved prompts you can pick at capture time), Auto-Save Backups (every capture saved to a folder you control), OCR text extraction, Voice to Prompt, and Multi-Target Hotkeys. Pro also raises the recent-captures cap from 3 to 50. Free works forever with no nags.",
+                a: "Free gives you the full core workflow — hotkey-driven screenshot capture, one auto-type default prompt, region selection, capture history of 3, and all feedback options. Pro ($25 one-time) unlocks five power features: Prompt Picker (Ctrl+Alt+P opens a popup of your saved prompts), Auto-Save Backups (every screenshot saved as a timestamped PNG to a folder you choose), OCR text extraction (Ctrl+Alt+T), Voice to Prompt (Ctrl+Alt+V), and Multi-Target Hotkeys (bind hotkeys to specific pre-set prompts). Pro also raises the recent-captures cap from 3 to 50. Free works forever with no nags.",
               },
               {
                 q: "Does it actually work with ChatGPT, Claude, etc?",
