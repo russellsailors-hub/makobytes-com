@@ -48,12 +48,21 @@ const TABS: Tab[] = [
   },
   {
     id: "pro",
-    label: "Pro features",
+    label: "Pro: OCR + voice",
     Icon: Crown,
     src: "/screenshots/settings-pro.png",
-    alt: "PromptPixel Pro features: OCR, Voice prompt, Multi-target hotkeys",
+    alt: "PromptPixel Pro features: OCR text extraction and voice prompt",
     caption:
-      "Pro unlocks OCR text extraction, voice prompting, and multi-target hotkeys that fire pre-set prompts in one keystroke.",
+      "Pro unlocks OCR text extraction (drag a box, get the text on your clipboard) and voice prompting (speak your prompt with Windows Speech).",
+  },
+  {
+    id: "pro2",
+    label: "Pro: Multi-target",
+    Icon: Crown,
+    src: "/screenshots/settings-pro-2.png",
+    alt: "PromptPixel Pro: Multi-target hotkeys for pre-set prompts",
+    caption:
+      "Bind extra hotkeys to specific pre-set prompts. Ctrl+Alt+1 → 'Explain this code'. Ctrl+Alt+2 → 'What's wrong here?'. One keystroke, one workflow.",
   },
 ];
 
