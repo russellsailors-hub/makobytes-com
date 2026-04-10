@@ -383,8 +383,8 @@ export default function MakoBytesHub() {
               },
               {
                 Icon: Clock,
-                title: "Pay once. Own it.",
-                body: "Buy a MakoBytes app and you own it. The current version keeps working forever — no expiry, no nag screens, no feature loss. Updates are included for the first year, with an optional renewal if you want to keep getting new ones.",
+                title: "Perpetual license, JetBrains-style.",
+                body: "Every MakoBytes app is sold under a perpetual license. Buy it once, own that version forever — no expiry, no nag screens, no feature loss. Updates are included for 12 months; optional $15/year after that if you want new versions. Stop renewing and your software keeps working. The way it should be.",
               },
               {
                 Icon: Sparkles,

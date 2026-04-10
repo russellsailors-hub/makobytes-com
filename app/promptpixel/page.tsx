@@ -188,11 +188,11 @@ export default function PromptPixelPage() {
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
-                pro $25 once · 1 yr updates
+                pro: $25 perpetual license
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
-                no forced subscription
+                12 months of updates
               </span>
             </div>
           </div>
@@ -500,10 +500,11 @@ export default function PromptPixelPage() {
                 <div className="mt-4 flex items-baseline gap-2">
                   <span className="text-5xl font-black text-white">$25</span>
                   <span className="text-white/50 line-through">$49</span>
-                  <span className="ml-1 text-white/60">one-time</span>
+                  <span className="ml-1 text-white/60">perpetual</span>
                 </div>
                 <p className="mt-4 text-sm text-white/60">
-                  Everything in Free, plus the three power tools.
+                  Buy once. Own this version forever. Updates included for 12
+                  months.
                 </p>
 
                 <ul className="mt-8 space-y-3 text-sm">
@@ -515,7 +516,8 @@ export default function PromptPixelPage() {
                     "Voice to Prompt (Ctrl+Alt+V)",
                     "Multi-Target Hotkeys",
                     "Recent captures raised to 50",
-                    "1 year of updates included",
+                    "Perpetual license — own this version forever",
+                    "12 months of new versions + updates",
                     "Priority email support",
                     "30-day money-back guarantee",
                   ].map((item) => (
@@ -536,16 +538,19 @@ export default function PromptPixelPage() {
                   href="#buy"
                   className="btn-glow mt-10 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold text-white"
                 >
-                  Unlock Pro — $25
+                  Buy Pro — $25
                   <ArrowRight className="h-5 w-5" />
                 </a>
                 <p className="mono-tag mt-3 text-center text-white/40">
-                  one-time · year 1 of updates included
+                  perpetual license · 12 months of updates
                 </p>
-                <p className="mt-2 text-center text-[11px] leading-relaxed text-white/40">
-                  After year 1: keep what you have forever (no nag, no
-                  expiry) — or renew updates for{" "}
-                  <span className="text-white/60">$15/year</span>.
+                <p className="mt-3 rounded-lg border border-white/5 bg-ink-950/50 p-3 text-center text-[11px] leading-relaxed text-white/50">
+                  When your update period ends, your version of PromptPixel
+                  keeps working{" "}
+                  <span className="text-white/80">forever</span> — every Pro
+                  feature, every hotkey, no expiry. Want new versions
+                  afterwards? Renew updates for{" "}
+                  <span className="text-white/80">$15/year</span>. Your call.
                 </p>
               </div>
             </div>
@@ -624,12 +629,16 @@ export default function PromptPixelPage() {
                 a: "30-day money-back guarantee, no forms, no questions. Email hello@makobytes.com and we refund you. Free stays free either way.",
               },
               {
-                q: "How do updates work?",
-                a: "Your $25 Pro purchase includes Year 1 of updates. After Year 1 you have a choice: keep using your current version forever (no nag, no expiry, no missing features — everything you paid for keeps working), OR optionally renew updates for $15/year to keep getting new features and bug fixes. The renewal is always optional, never forced.",
+                q: "How does the perpetual license work?",
+                a: "Pro is a perpetual license, JetBrains-style. The $25 buys you the current version of PromptPixel — yours to keep, forever, no expiry. Updates and new versions are included for 12 months. After 12 months, your version keeps working with every feature intact; you just stop receiving new versions. If you want to keep getting updates, renew for $15/year. If you don't, your software keeps running and nothing changes for you.",
               },
               {
-                q: "What happens if I don't renew updates?",
-                a: "Nothing breaks. Your current version of PromptPixel keeps working forever — every Pro feature you paid for, every hotkey, every saved prompt. You just stop receiving new features and bug fixes after Year 1. You can renew later if you want to catch up, or stay on your current version indefinitely.",
+                q: "What happens after 12 months if I don't renew?",
+                a: "Nothing breaks, nothing locks, nothing nags. Your current version of PromptPixel keeps working exactly as it did the day you bought it — every Pro feature, every hotkey, every saved prompt. The only thing you stop receiving is new versions. You can renew later if you want to catch up to the latest release, or stay on your current version indefinitely. Many customers will never renew and that's totally fine.",
+              },
+              {
+                q: "Is the $15/year a subscription?",
+                a: "No — it's an optional update renewal, not a subscription. Your software is yours forever the moment you pay $25; the $15/year only buys you new versions. If you stop renewing, the software you bought keeps working forever. Compare with traditional SaaS where stopping payment cuts off access — that never happens here.",
               },
             ].map(({ q, a }) => (
               <details
